@@ -9444,6 +9444,7 @@ keyboard.inline_keyboard = {
 {{text = '⁴', callback_data="/help4"},{text = '⁵', callback_data="/help5"},{text = '⁶', callback_data="/help6"}},
 {{text = 'VeCto TeAm .', url="t.me/TeAm_VeCto"}},
 },
+}
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 
