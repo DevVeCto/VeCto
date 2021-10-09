@@ -10,7 +10,7 @@ chmod +x ts
 get() {
 rm -fr VeCto.lua
 rm -fr sudo.lua
-wget "https://raw.githubusercontent.com/OWNVeCto/VeCto/master/VeCto.lua"
+wget "https://raw.githubusercontent.com/DevVeCto/VeCto/master/VeCto.lua"
 lua start.lua
 }
 installall(){
