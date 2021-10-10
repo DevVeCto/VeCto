@@ -525,11 +525,6 @@ if status == "unlock" then
 send(msg.chat_id_, msg.id_,NameUser.."\n"..text)
 return false
 end
-if status == "reply" then
-inlin = {{{text = '- اضغط هنا للحذف.',callback_data=msg.sender_user_id_..":cancelRd:del"}}, }
-send_inlin_key(msg.chat_id_,NameUserr.."\n"..text,inlin,msg.id_)
-return false
-end
 if status == "reply_Add" then
 send(msg.chat_id_, msg.id_,NameUserr.."\n"..text)
 return false
@@ -9769,7 +9764,6 @@ end
 end --- Chat_Type = 'UserBot' 
 end
 end
-function tdcli_update_callback(data)
 if data.ID == "UpdateNewCallbackQuery" then
 local Chat_id = data.chat_id_
 local From_id = data.id_
