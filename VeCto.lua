@@ -9066,13 +9066,7 @@ end
 
 
 
-if data.ID == "UpdateNewCallbackQuery" then
-tahaj = data
-msg = data
-local Chat_id = data.chat_id_
-local Msg_id = data.message_id_
-local msg_idd = Msg_id/2097152/0.5
-local Text = data.payload_.data_
+
 if Text and Text:match('(.*)/ideengphoto') then
 if tonumber(Text:match('(.*)/ideengphoto')) == tonumber(data.sender_user_id_) then
 tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = data.sender_user_id_,offset_ = 0,limit_ = 1},function(extra,taha,success) 
