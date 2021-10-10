@@ -8831,9 +8831,9 @@ end
 
 
 
-if text == 'الاوامر' and Mod(msg) then
-local help_text = database:get(bot_id..'help_text')
-Text = [[
+if text == 'الاوامر' then
+if Addictive(msg) then
+local Text =[[
 *•  هناك {5} اوامر لعرضها*
 
 *• م1 ↺لعرض اوامر الحمايه*
@@ -8842,42 +8842,19 @@ Text = [[
 *• م4 ↺لعرض اوامر المنشئين*
 *• م5 ↺لعرض اوامر المطورين*
 * • م6 ↺ لعرض اوامر جديده*
- — — — — — — — — — 
-[VeCto TeAm . ](t.me/TeAm_VeCto) 
+[• Ch Source](t.me/TeAm_VeCto)
 ]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{text = 'م1', callback_data=msg.sender_user_id_.."/help1"},{text = 'م2', callback_data=msg.sender_user_id_.."/help2"},{text = 'م3', callback_data=msg.sender_user_id_.."/help3"},
-},
-{
-{text = 'م4', callback_data=msg.sender_user_id_.."/help4"},
-},
-{
-{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
-end
-
-
-if text == 'م1' and Addictive(msg) then  
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
-end
+send(msg.chat_id_, msg.id_,Text)
 return false
 end
+
+if text == 'م1' and Addictive(msg) then
 Text = [[
-• اوامر حمايه المجموعه
- — — — — — — — — — 
+• اوامر حمايه القروب
+ 
 • قفل/فتح + الاوامر الادناه 
-• قفل/فتح + الامر بالتقيد • بالطرد • بالكتم
- — — — — — — — — — 
+• قفل/فتح + الامر بالتقيد• بالطرد• بالكتم
+ 
 • الروابط
 • المعرف
 • التاك
@@ -8887,7 +8864,6 @@ Text = [[
 • المتحركه
 • الملفات
 • الصور
-
 • الملصقات
 • الفيديو
 • الانلاين
@@ -8897,55 +8873,45 @@ Text = [[
 • الصوت
 • الجهات
 • الاشعارات
-
 • الماركداون
 • البوتات
 • التكرار
 • الكلايش
 • السيلفي
- — — — — — — — — — 
-[• Ch Source](t.me/TeAM_VeCto)
+ 
+[• Ch Source](t.me/TeAm_VeCto)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
 end
-if text == 'م2' and Addictive(msg) then  
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
+if text == 'م2' and Addictive(msg) then
 Text = [[
 • اوامر الادمنيه
- — — — — — — — — —  
+  
  • تفعيل/تعطيل الترحيب
  • اضف /مسح صلاحيه
 • وضع تكرار + العدد
 • رفع/تنزيل مميز
 • عدد الكروب
 • تاك للكل
- — — — — — — — — —
+
 • كتم
 • حظر
 • طرد
 • منع
 • تقيد
- — — — — — — — — —
+
  • المكتومين
 • المحظورين
 • المميزين
 • الصلاحيات
 • قائمه المنع
- — — — — — — — — —
+
 • الغاء كتم
 • الغاء حظر
 • الغاء منع
 • الغاء تقيد
- — — — — — — — — —
+
 • الغاء تثبيت
 • الاعدادات
 • تثبيت
@@ -8957,14 +8923,14 @@ Text = [[
 • سحكاتي
 • رسائلي
 • كشف البوتات
- — — — — — — — — — 
+ 
 • وضع اسم
 • وضع رابط
 • وضع صوره
 • وضع وصف
 • وضع قوانين
 • وضع ترحيب
- — — — — — — — — — 
+ 
 • مسح قائمه المنع
 • مسح المحظورين
 • مسح المميزين
@@ -8975,22 +8941,13 @@ Text = [[
 • مسح الصوره
 • مسح الصلاحيات
 • مسح الرابط
- — — — — — — — — — 
-[• Ch Source](t.me/TeAM_VeCto)
+ 
+[• Ch Source](t.me/TeAm_VeCto)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
 end
-if text == 'م3' and Owner(msg) then  
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
+if text == 'م3' and Owner(msg) then
 Text = [[
 • اوامر المدير
 — — — — — — — — — 
@@ -9008,7 +8965,7 @@ Text = [[
 • اضف رد
 • حذف رد
 • تنظيف + عدد
- — — — — — — — — — 
+ 
 • تفعيل/تعطيل الرفع
 • تفعيل/تعطيل الايدي
 • تفعيل/تعطيل الابراج
@@ -9022,33 +8979,24 @@ Text = [[
 • تفعيل/تعطيل الايدي بالصوره
 • تفعيل/تعطيل اوامر التحشيش
 • تفعيل/تعطيل الرابط/جلب الرابط
- — — — — — — — — — 
-[• Ch Source](t.me/TeAM_VeCto)
+ 
+[• Ch Source](t.me/TeAm_VeCto)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
 end
 if text == 'م4' and Constructor(msg) then  
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
 Text = [[
 • اوامر المنشئين الاساسين 
- — — — — — — — — — 
+ 
 • رفع/تنزيل منشئ اساسي
 • رفع/تنزيل منشئ
 • المنشئين
 • مسح المنشئين
 • مسح ردود المدير
- — — — — — — — — — 
+ 
 • اوامر المنشئين
- — — — — — — — — — 
+ 
 • رفع/تنزيل مدير
 • المدراء
 • مسح المدراء
@@ -9058,8 +9006,8 @@ Text = [[
 • حذف/مسح الاوامر المضافه
 • اضف رسائل + العدد بالرد
 • اضف مجوهرات + العدد بالرد
- — — — — — — — — — 
-[• Ch Source](t.me/TeAM_VeCto)
+ 
+[• Ch Source](t.me/TeAm_VeCto)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
@@ -9067,7 +9015,7 @@ end
 if text == 'م5' and DevBot(msg) then
 Text = [[
 • اوامر المطور الاساسي  
- — — — — — — — — — 
+ 
 • تحديث 
 • الملفات 
 • المتجر 
@@ -9079,7 +9027,7 @@ Text = [[
 • اضف رد للكل 
 • حذف رد للكل 
 • مسح المطورين
-• مسح قائمه العام
+• مسح العام
 • تعطيل الاذاعه 
 • تفعيل الاذاعه 
 • تعطيل الاذاعه
@@ -9095,7 +9043,7 @@ Text = [[
 • تفعيل ملف + اسم الملف
 • تعطيل ملف + اسم الملف
 •  تعين عدد الاعضاء + العدد
- — — — — — — — — — 
+ 
 • غادر 
 • اذاعه 
 • رفع منشئ 
@@ -9108,389 +9056,11 @@ Text = [[
 • المنشئين الاساسين 
 • رفع/تنزيل منشئ اساسي
 • مسح المنشئين الاساسين
- — — — — — — — — — 
-[• Ch Source](t.me/TeAM_VeCto)
+ 
+[• Ch Source](t.me/TeAm_VeCto)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
-end
-
-if DAata == '/help1' then
-if not Mod(data) then
-local notText = '•  عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-local Teext =[[
-• اوامر حمايه المجموعه
- — — — — — — — — — 
-• قفل/فتح + الاوامر الادناه 
-• قفل/فتح + الامر بالتقيد • بالطرد • بالكتم
- — — — — — — — — — 
-• الروابط
-• المعرف
-• التاك
-• الشارحه
-• التعديل
-• التثبيت
-• المتحركه
-• الملفات
-• الصور
-
-• الملصقات
-• الفيديو
-• الانلاين
-• الدردشه
-• التوجيه
-• الاغاني
-• الصوت
-• الجهات
-• الاشعارات
-
-• الماركداون
-• البوتات
-• التكرار
-• الكلايش
-• السيلفي
- — — — — — — — — — 
-[• TeAm VeCto .](t.me/TeAm_VeCto)
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
-},
-{
-{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
-},
-{
-{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
-},
-{
-{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-end
-end
-if DAata == '/help2' then
-if not Mod(data) then
-local notText = '•  عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-local Teext =[[
-• اوامر الادمنيه
- — — — — — — — — —  
- • تفعيل/تعطيل الترحيب
- • اضف /مسح صلاحيه
-• وضع تكرار + العدد
-• رفع/تنزيل مميز
-• عدد الكروب
-• تاك للكل
- — — — — — — — — —
-• كتم
-• حظر
-• طرد
-• منع
-• تقيد
- — — — — — — — — —
- • المكتومين
-• المحظورين
-• المميزين
-• الصلاحيات
-• قائمه المنع
- — — — — — — — — —
-• الغاء كتم
-• الغاء حظر
-• الغاء منع
-• الغاء تقيد
- — — — — — — — — —
-• الغاء تثبيت
-• الاعدادات
-• تثبيت
-• الرابط
-• القوانين
-• الترحيب
-• ايدي
-• جهاتي
-• سحكاتي
-• رسائلي
-• كشف البوتات
- — — — — — — — — — 
-• وضع اسم
-• وضع رابط
-• وضع صوره
-• وضع وصف
-• وضع قوانين
-• وضع ترحيب
- — — — — — — — — — 
-• مسح قائمه المنع
-• مسح المحظورين
-• مسح المميزين
-• مسح المكتومين
-• مسح المطرودين
-• مسح القوانين
-• مسح البوتات
-• مسح الصوره
-• مسح الصلاحيات
-• مسح الرابط
- — — — — — — — — — 
-[• Ch Source](t.me/TeAM_VeCto) 
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
-},
-{
-{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
-},
-{
-{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
-},
-{
-{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-end
-end
-if DAata == '/help3' then
-if not Mod(data) then
-local notText = '•  عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-local Teext =[[
-• اوامر المدير
-— — — — — — — — — 
-• رفع القيود
-• كشف القيود
-• تنزيل الكل
-• رفع ادمن
-•  تنزيل ادمن
-• رفع الادمنيه
-• مسح الادمنيه
-• الادمنيه
-• تعين الايدي
-• مسح الايدي
-• ردود المدير
-• اضف رد
-• حذف رد
-• تنظيف + عدد
- — — — — — — — — — 
-• تفعيل/تعطيل الرفع
-• تفعيل/تعطيل الايدي
-• تفعيل/تعطيل الابراج
-• تفعيل/تعطيل اطردني
-• تفعيل/تعطيل الزخرفه
-• تفعيل/تعطيل ردود المدير
-• تفعيل/تعطيل حساب العمر
-• تفعيل/تعطيل ردود المطور
-• تفعيل/تعطيل الحظر/الطرد
-• تفعيل/تعطيل اللعبه/الالعاب
-• تفعيل/تعطيل الايدي بالصوره
-• تفعيل/تعطيل اوامر التحشيش
-• تفعيل/تعطيل الرابط/جلب الرابط
- — — — — — — — — — 
-[• Ch Source](t.me/TeAM_VeCto)
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
-},
-{
-{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
-},
-{
-{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
-},
-{
-{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-end
-end
-if DAata == '/help4' then
-if not Mod(data) then
-local notText = '•  عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-local Teext =[[
-• اوامر المنشئين الاساسين 
- — — — — — — — — — 
-• رفع/تنزيل منشئ اساسي
-• رفع/تنزيل منشئ
-• المنشئين
-• مسح المنشئين
-• مسح ردود المدير
- — — — — — — — — — 
-• اوامر المنشئين
- — — — — — — — — — 
-• رفع/تنزيل مدير
-• المدراء
-• مسح المدراء
-• تعين/مسح الايدي
-• اضف/حذف امر
-• الاوامر المضافه
-• حذف/مسح الاوامر المضافه
-• اضف رسائل + العدد بالرد
-• اضف مجوهرات + العدد بالرد
- — — — — — — — — — 
-[• Ch Source](t.me/TeAM_VeCto)
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
-},
-{
-{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
-},
-{
-{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
-},
-{
-{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-end
-end
-if DAata == '/help5' then
-if not Mod(data) then
-local notText = '•  عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-local Teext =[[
-• اوامر المطور الاساسي  
- — — — — — — — — — 
-• تحديث 
-• الملفات 
-• المتجر 
-• حظر عام
-• الغاء العام
-• المطورين
-• ردود المطور 
-• اوامر المطور 
-• اضف رد للكل 
-• حذف رد للكل 
-• مسح المطورين
-• مسح قائمه العام
-• تعطيل الاذاعه 
-• تفعيل الاذاعه 
-• تعطيل الاذاعه
-• تفعيل المغادرة
-•  تحديث السورس
-• مسح ردود المطور
-• مسح جميع الملفات
-• اضف /حذف مطور 
-• وضع كليشه المطور 
-• حذف كليشه المطور 
-• تفعيل البوت الخدمي 
-• تعطيل البوت الخدمي
-• تفعيل ملف + اسم الملف
-• تعطيل ملف + اسم الملف
-•  تعين عدد الاعضاء + العدد
- — — — — — — — — — 
-• غادر 
-• اذاعه 
-• رفع منشئ 
-• اذاعه خاص 
-• الاحصائيات 
-• غادر + الايدي
-• تفعيل /تعطيل
-• اذاعه بالتوجيه
-• اذاعه بالتثبيت 
-• المنشئين الاساسين 
-• رفع/تنزيل منشئ اساسي
-• مسح المنشئين الاساسين
- — — — — — — — — — 
-[• Ch Source](t.me/TeAM_VeCto) 
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
-},
-{
-{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
-},
-{
-{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
-},
-{
-{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-end
-end
-if DAata == '/help6' then
-if not Mod(data) then
-local notText = '•  عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-local Teext =[[
-*ٴ— — — — — — — — — *
-*الحصريات*
-*— — — —*
-• *تفعيل اليوتيوب*
-• *الحساب + ايدي*
-• *حجره ورقه مقص*
-*ٴ— — — — — — — — — *
-[• TeAm VeCto .](t.me/TeAm_VeCto)
-]]
-keyboard = {} 
-{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
-},
-{
-{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
-},
-{
-{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
-},
-{
-{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
-end
-end
-
-if DAata == '/help' then
-if not Mod(data) then
-local notText = '•  عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-local Teext =[[
-*•  هناك {5} اوامر لعرضها*
- — — — — — — — — —
-*• م1 ↺لعرض اوامر الحمايه*
-*• م2 ↺لعرض اوامر الادمنيه*
-*•  م3 ↺لعرض اوامر المدراء*
-*• م4 ↺لعرض اوامر المنشئين*
-*• م5 ↺لعرض اوامر المطورين*
-* • م6 ↺ لعرض اوامر جديده*
- — — — — — — — — —
-[• TeAm VeCto .](t.me/TeAm_VeCto) 
-]]
-keyboard = {} 
-keyboard.inline_keyboard = {
-{text = 'م1', callback_data=msg.sender_user_id_.."/help1"},{text = 'م2', callback_data=msg.sender_user_id_.."/help2"},{text = 'م3', callback_data=msg.sender_user_id_.."/help3"},
-},
-{
-{text = 'م4', callback_data=msg.sender_user_id_.."/help4"},
-},
-{
-{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
 end
 
 
@@ -10287,12 +9857,12 @@ else
 UserName_User = 'لا يوجد'
 end
 local Id = data.sender_user_id_
-local NumMsg = database:get(bot_id..'Tshake:messageUser'..data.chat_id_..':'..data.sender_user_id_) or 0
+local NumMsg = database:get(bot_id..'VeCto:messageUser'..data.chat_id_..':'..data.sender_user_id_) or 0
 local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."Tshake:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
-local message_edit = database:get(bot_id..'Tshake:message_edit'..data.chat_id_..data.sender_user_id_) or 0
+local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
+local message_edit = database:get(bot_id..'VeCto:message_edit'..data.chat_id_..data.sender_user_id_) or 0
 local Num_Games = database:get(bot_id.."Tshak:Add:Num"..data.chat_id_..data.sender_user_id_) or 0
-local Add_Mem = database:get(bot_id.."Tshake:Add:Memp"..data.chat_id_..":"..data.sender_user_id_) or 0
+local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..data.chat_id_..":"..data.sender_user_id_) or 0
 local Total_Photp = (taha.total_count_ or 0)
 local Texting = {
 'صورتك فدشي 😘😔❤️',
@@ -10340,12 +9910,12 @@ UserName_User = 'لا يوجد'
 end
 
 local Id = data.sender_user_id_
-local NumMsg = database:get(bot_id..'Tshake:messageUser'..data.chat_id_..':'..data.sender_user_id_) or 0
+local NumMsg = database:get(bot_id..'VeCto:messageUser'..data.chat_id_..':'..data.sender_user_id_) or 0
 local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."Tshake:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
-local message_edit = database:get(bot_id..'Tshake:message_edit'..data.chat_id_..data.sender_user_id_) or 0
+local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
+local message_edit = database:get(bot_id..'VeCto:message_edit'..data.chat_id_..data.sender_user_id_) or 0
 local Num_Games = database:get(bot_id.."Tshak:Add:Num"..data.chat_id_..data.sender_user_id_) or 0
-local Add_Mem = database:get(bot_id.."Tshake:Add:Memp"..data.chat_id_..":"..data.sender_user_id_) or 0
+local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..data.chat_id_..":"..data.sender_user_id_) or 0
 local Total_Photp = (taha.total_count_ or 0)
 local Texting = {
 'صورتك فدشي 😘😔❤️',
@@ -10395,12 +9965,12 @@ UserName_User = 'لا يوجد'
 end
 
 local Id = users[2]
-local NumMsg = database:get(bot_id..'Tshake:messageUser'..data.chat_id_..':'..users[2]) or 0
+local NumMsg = database:get(bot_id..'VeCto:messageUser'..data.chat_id_..':'..users[2]) or 0
 local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."Tshake:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
-local message_edit = database:get(bot_id..'Tshake:message_edit'..data.chat_id_..users[2]) or 0
+local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
+local message_edit = database:get(bot_id..'VeCto:message_edit'..data.chat_id_..users[2]) or 0
 local Num_Games = database:get(bot_id.."Tshak:Add:Num"..data.chat_id_..users[2]) or 0
-local Add_Mem = database:get(bot_id.."Tshake:Add:Memp"..data.chat_id_..":"..users[2]) or 0
+local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..data.chat_id_..":"..users[2]) or 0
 local Total_Photp = (taha.total_count_ or 0)
 local Texting = {
 'صورتك فدشي 😘😔❤️',
@@ -10451,12 +10021,12 @@ UserName_User = 'لا يوجد'
 end
 
 local Id = users[2]
-local NumMsg = database:get(bot_id..'Tshake:messageUser'..data.chat_id_..':'..users[2]) or 0
+local NumMsg = database:get(bot_id..'VeCto:messageUser'..data.chat_id_..':'..users[2]) or 0
 local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."Tshake:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
-local message_edit = database:get(bot_id..'Tshake:message_edit'..data.chat_id_..users[2]) or 0
+local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
+local message_edit = database:get(bot_id..'VeCto:message_edit'..data.chat_id_..users[2]) or 0
 local Num_Games = database:get(bot_id.."Tshak:Add:Num"..data.chat_id_..users[2]) or 0
-local Add_Mem = database:get(bot_id.."Tshake:Add:Memp"..data.chat_id_..":"..users[2]) or 0
+local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..data.chat_id_..":"..users[2]) or 0
 local Total_Photp = (taha.total_count_ or 0)
 local Texting = {
 'صورتك فدشي 😘😔❤️',
@@ -10506,12 +10076,12 @@ UserName_User = 'لا يوجد'
 end
 
 local Id = data.sender_user_id_
-local NumMsg = database:get(bot_id..'Tshake:messageUser'..data.chat_id_..':'..data.sender_user_id_) or 0
+local NumMsg = database:get(bot_id..'VeCto:messageUser'..data.chat_id_..':'..data.sender_user_id_) or 0
 local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."Tshake:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
-local message_edit = database:get(bot_id..'Tshake:message_edit'..data.chat_id_..data.sender_user_id_) or 0
+local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
+local message_edit = database:get(bot_id..'VeCto:message_edit'..data.chat_id_..data.sender_user_id_) or 0
 local Num_Games = database:get(bot_id.."Tshak:Add:Num"..data.chat_id_..data.sender_user_id_) or 0
-local Add_Mem = database:get(bot_id.."Tshake:Add:Memp"..data.chat_id_..":"..data.sender_user_id_) or 0
+local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..data.chat_id_..":"..data.sender_user_id_) or 0
 local Total_Photp = (taha.total_count_ or 0)
 local Texting = {
 'صورتك فدشي 😘😔❤️',
@@ -10559,12 +10129,12 @@ UserName_User = 'لا يوجد'
 end
 
 local Id = data.sender_user_id_
-local NumMsg = database:get(bot_id..'Tshake:messageUser'..data.chat_id_..':'..data.sender_user_id_) or 0
+local NumMsg = database:get(bot_id..'VeCto:messageUser'..data.chat_id_..':'..data.sender_user_id_) or 0
 local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."Tshake:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
-local message_edit = database:get(bot_id..'Tshake:message_edit'..data.chat_id_..data.sender_user_id_) or 0
+local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
+local message_edit = database:get(bot_id..'VeCto:message_edit'..data.chat_id_..data.sender_user_id_) or 0
 local Num_Games = database:get(bot_id.."Tshak:Add:Num"..data.chat_id_..data.sender_user_id_) or 0
-local Add_Mem = database:get(bot_id.."Tshake:Add:Memp"..data.chat_id_..":"..data.sender_user_id_) or 0
+local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..data.chat_id_..":"..data.sender_user_id_) or 0
 local Total_Photp = (taha.total_count_ or 0)
 local Texting = {
 'صورتك فدشي 😘😔❤️',
