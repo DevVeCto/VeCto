@@ -5468,6 +5468,9 @@ end
 
 
 
+
+
+
 if text == 'رابط الحذف' or text == 'رابط حذف' then
 t =[[
 *رابط الحذف في جميع مواقع التواصل 
@@ -7402,20 +7405,6 @@ if not database:sismember(bot_id..'VeCto:Spam:Group'..msg.sender_user_id_,text) 
 database:sadd(bot_id.."VeCto:Spam:Group"..msg.sender_user_id_,text) 
 tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = msg.sender_user_id_,offset_ = 0,limit_ = 1},function(extra,taha,success) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-tdcli_function ({ID = "GetChatMember",chat_id_ = msg.chat_id_,user_id_ = msg.sender_user_id_},function(arg,deata) 
-if deata.status_.ID == "ChatMemberStatusCreator" then 
-rtpa = 'منشئ'
-elseif deata.status_.ID == "ChatMemberStatusEditor" then 
-rtpa = 'ادمن' 
-elseif deata.status_.ID == "ChatMemberStatusMember" then 
-rtpa = 'عضو'
-end
-
-if deata.join_date_ ~= 0 then
-tarek = os.date('%Y-%m-%d', deata.join_date_)
-else
-tarek = 'لا يوجد ' 
-end
 if data.username_ then
 UserName_User = '@'..data.username_
 else
@@ -7424,7 +7413,7 @@ end
 local Id = msg.sender_user_id_
 local NumMsg = database:get(bot_id..'VeCto:messageUser'..msg.chat_id_..':'..msg.sender_user_id_) or 0
 local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..Id) or Get_Rank(Id,msg.chat_id_)
+local Status_Gps = Get_Rank(Id,msg.chat_id_)
 local message_edit = database:get(bot_id..'VeCto:message_edit'..msg.chat_id_..msg.sender_user_id_) or 0
 local Num_Games = database:get(bot_id.."Tshak:Add:Num"..msg.chat_id_..msg.sender_user_id_) or 0
 local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..msg.chat_id_..":"..msg.sender_user_id_) or 0
@@ -7438,7 +7427,7 @@ local Texting = {
 "عمري الحلوين 💘",
 }
 local Description = Texting[math.random(#Texting)]
-local get_id = database:get(bot_id.."VeCto:Klesh:Id:Bot"..msg.chat_id_) or database:get(bot_id.."VeCto:KleshIDALLBOT")
+local get_id = database:get(bot_id.."VeCto:Klesh:Id:Bot"..msg.chat_id_)
 if not database:get(bot_id..'VeCto:Lock:ID:Bot:Photo'..msg.chat_id_) then
 if taha.photos_[0] then
 if get_id then
@@ -7452,29 +7441,12 @@ local get_id = get_id:gsub('#auto',TotalMsg)
 local get_id = get_id:gsub('#Description',Description) 
 local get_id = get_id:gsub('#game',Num_Games) 
 local get_id = get_id:gsub('#photos',Total_Photp) 
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id='..msg.chat_id_..'&caption='..URL.escape(get_id)..'&photo='..taha.photos_[0].sizes_[1].photo_.persistent_id_..'&reply_to_message_id='..msg_id) 
+sendPhoto(msg.chat_id_,msg.id_,taha.photos_[0].sizes_[1].photo_.persistent_id_,get_id)
 else
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'en', callback_data=msg.sender_user_id_.."/ideengphoto"},{text = 'ar', callback_data=msg.sender_user_id_.."/idearpphoto"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-local texte = '▹ |'..Description..'\n▹ |ايديك  . '..Id..'\n▹ | معرفك  . '..UserName_User..'\n▹ |رتبتك  . '..Status_Gps..'\n▹ | رسائلك  . '..NumMsg..' \n▹ | التفاعل . '..TotalMsg..'\n▹ |الالعاب  . '..Num_Games
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id='..msg.chat_id_..'&caption='..URL.escape(texte)..'&photo='..taha.photos_[0].sizes_[1].photo_.persistent_id_..'&reply_to_message_id='..msg_id..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+sendPhoto(msg.chat_id_,msg.id_,taha.photos_[0].sizes_[1].photo_.persistent_id_,'• '..Description..'\n• ايديك ↺ '..Id..'\n• معرفك ↺ '..UserName_User..'\n• رتبتك ↺ '..Status_Gps..'\n• رسائلك ↺ '..NumMsg..'\n• السحكات ↺ '..message_edit..' \n• تتفاعلك ↺ '..TotalMsg..'\n•  مجوهراتك ↺ '..Num_Games)
 end
 else
-local texte = '\n*▹ |ايديك  . '..Id..'\n▹ | معرفك  .* ['..UserName_User..']*\n▹ |رتبتك  . '..Status_Gps..'\n▹ | رسائلك  . '..NumMsg..' \n▹ | التفاعل . '..TotalMsg..'\n▹ |الالعاب  . '..Num_Games..'*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'en', callback_data=msg.sender_user_id_.."/ideeng"},{text = 'ar', callback_data=msg.sender_user_id_.."/idearp"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(texte).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+send(msg.chat_id_, msg.id_,'• ليس لديك صوره \n'..'\n*• ايديك ↺ '..Id..'\n• معرفك ↺* ['..UserName_User..']*\n• رتبتك ↺ '..Status_Gps..'\n• رسائلك ↺ '..NumMsg..'\n• السحكات ↺ '..message_edit..' \n• تتفاعلك ↺ '..TotalMsg..'\n•  مجوهراتك ↺ '..Num_Games..'*') 
 end
 else
 if get_id then
@@ -7488,31 +7460,15 @@ local get_id = get_id:gsub('#auto',TotalMsg)
 local get_id = get_id:gsub('#Description',Description) 
 local get_id = get_id:gsub('#game',Num_Games) 
 local get_id = get_id:gsub('#photos',Total_Photp) 
-local texte = '['..get_id..']'
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(texte).."&reply_to_message_id="..msg_id.."&parse_mode=markdown")
+send(msg.chat_id_, msg.id_,'['..get_id..']') 
 else
-local texte = '\n*▹ |ايديك  . '..Id..'\n▹ | معرفك  .* ['..UserName_User..']*\n▹ |رتبتك  . '..Status_Gps..'\n▹ | رسائلك  . '..NumMsg..' \n▹ | التفاعل . '..TotalMsg..'\n▹ |الالعاب  . '..Num_Games..'*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'en', callback_data=msg.sender_user_id_.."/ideeng"},{text = 'ar', callback_data=msg.sender_user_id_.."/idearp"},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(texte).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+send(msg.chat_id_, msg.id_,'\n*• ايديك ↺ '..Id..'\n• معرفك ↺* ['..UserName_User..']*\n• رتبتك ↺ '..Status_Gps..'\n• رسائلك ↺ '..NumMsg..'\n• السحكات ↺ '..message_edit..' \n• تتفاعلك ↺ '..TotalMsg..'\n•  مجوهراتك ↺ '..Num_Games..'*') 
 end
 end
 end,nil)   
 end,nil)   
-end,nil)   
 end
 end
-
-
-
-
-
 if text == 'تعطيل التنظيف' and BasicConstructor(msg) then   
 if database:get(bot_id..'Lock:delmsg'..msg.chat_id_)  then
 database:del(bot_id..'Lock:delmsg'..msg.chat_id_) 
@@ -7564,27 +7520,19 @@ end
 local Id = data.id_
 local NumMsg = database:get(bot_id..'VeCto:messageUser'..msg.chat_id_..':'..data.id_) or 0
 local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..Id) or Get_Rank(Id,msg.chat_id_)
+local Status_Gps = Get_Rank(Id,msg.chat_id_)
 local message_edit = database:get(bot_id..'VeCto:message_edit'..msg.chat_id_..data.id_) or 0
 local Num_Games = database:get(bot_id.."Tshak:Msg_User"..msg.chat_id_..":"..data.id_) or 0
 local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..msg.chat_id_..":"..data.id_) or 0
-local texte = '\n*▹ |ايديك  . '..Id..'\n▹ | معرفك  .* ['..UserName_User..']*\n▹ |رتبتك  . '..Status_Gps..'\n▹ | رسائلك  . '..NumMsg..' \n▹ | التفاعل . '..TotalMsg..'\n▹ |الالعاب  . '..Num_Games..'*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'en', callback_data=msg.sender_user_id_.."/ideeng1@"..Id},{text = 'ar', callback_data=msg.sender_user_id_.."/idearp1@"..Id},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(texte).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+send(msg.chat_id_, msg.id_,'*• ايديه - '..Id..'\n• رسائله - '..NumMsg..'\n• معرفه - *['..UserName_User..']*\n• تفاعله - '..TotalMsg..'\n• رتبته - '..Status_Gps..'\n• تعديلاته - '..message_edit..'\n• جهاته - '..Add_Mem..'\n• نوع الكشف - بالرد \n*') 
 end,nil)   
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
 end
 
-if text and text:match("^ايدي @(.*)$") and not database:get(bot_id..'VeCto:Lock:ID:Bot'..msg.chat_id_) then
-local username = text:match("^ايدي @(.*)$")
+if text and text:match("^ايدي @(.*)$")  and not database:get(bot_id..'VeCto:Lock:ID:Bot'..msg.chat_id_) then
+local username = text:match("^ايدي @(.*)$") 
 function Function_VeCto(extra, result, success)
 if result.id_ then
 tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(arg,data) 
@@ -7596,19 +7544,11 @@ end
 local Id = data.id_
 local NumMsg = database:get(bot_id..'VeCto:messageUser'..msg.chat_id_..':'..data.id_) or 0
 local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..Id) or Get_Rank(Id,msg.chat_id_)
+local Status_Gps = Get_Rank(Id,msg.chat_id_)
 local message_edit = database:get(bot_id..'VeCto:message_edit'..msg.chat_id_..data.id_) or 0
 local Num_Games = database:get(bot_id.."Tshak:Msg_User"..msg.chat_id_..":"..data.id_) or 0
 local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..msg.chat_id_..":"..data.id_) or 0
-local texte = '\n*▹ |ايديك  . '..Id..'\n▹ | معرفك  .* ['..UserName_User..']*\n▹ |رتبتك  . '..Status_Gps..'\n▹ | رسائلك  . '..NumMsg..' \n▹ | التفاعل . '..TotalMsg..'\n▹ |الالعاب  . '..Num_Games..'*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'en', callback_data=msg.sender_user_id_.."/ideeng1@"..Id},{text = 'ar', callback_data=msg.sender_user_id_.."/idearp1@"..Id},
-},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(texte).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+send(msg.chat_id_, msg.id_,'*• ايديه - '..Id..'\n• رسائله - '..NumMsg..'\n• معرفه - *['..UserName_User..']*\n• تفاعله - '..TotalMsg..'\n• رتبته - '..Status_Gps..'\n• تعديلاته - '..message_edit..'\n• جهاته - '..Add_Mem..'\n• نوع الكشف - بالمعرف \n*') 
 end,nil)   
 else
 send(msg.chat_id_, msg.id_,'• لا يوجد حساب بهاذا المعرف')
@@ -9063,334 +9003,6 @@ send(msg.chat_id_, msg.id_,Text)
 return false
 end
 
-
-
-
-
-if Text and Text:match('(.*)/ideengphoto') then
-if tonumber(Text:match('(.*)/ideengphoto')) == tonumber(data.sender_user_id_) then
-tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = data.sender_user_id_,offset_ = 0,limit_ = 1},function(extra,taha,success) 
-tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_},function(arg,date) 
-tdcli_function ({ID = "GetChatMember",chat_id_ = data.chat_id_,user_id_ = data.sender_user_id_},function(arg,deata) 
-if deata.status_.ID == "ChatMemberStatusCreator" then 
-rtpa = 'منشئ'
-elseif deata.status_.ID == "ChatMemberStatusEditor" then 
-rtpa = 'ادمن' 
-elseif deata.status_.ID == "ChatMemberStatusMember" then 
-rtpa = 'عضو'
-end
-if deata.join_date_ ~= 0 then
-tarek = os.date('%Y-%m-%d', deata.join_date_)
-else
-tarek = 'لا يوجد ' 
-end
-if date.username_ then
-UserName_User = '@'..date.username_
-else
-UserName_User = 'لا يوجد'
-end
-local Id = data.sender_user_id_
-local NumMsg = database:get(bot_id..'VeCto:messageUser'..data.chat_id_..':'..data.sender_user_id_) or 0
-local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
-local message_edit = database:get(bot_id..'VeCto:message_edit'..data.chat_id_..data.sender_user_id_) or 0
-local Num_Games = database:get(bot_id.."Tshak:Add:Num"..data.chat_id_..data.sender_user_id_) or 0
-local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..data.chat_id_..":"..data.sender_user_id_) or 0
-local Total_Photp = (taha.total_count_ or 0)
-local Texting = {
-'صورتك فدشي 😘😔❤️',
-"صارلك شكد مخليه ",
-"وفالله 😔💘",
-"كشخه برب 😉💘",
-"دغيره شبي هذ 😒",
-"عمري الحلوين 💘",
-}
-local Description = Texting[math.random(#Texting)]
-local texte = '\n▹ | Id 𖦹 '..Id..'\n▹ | UsErNaMe 𖦹 '..UserName_User..'\n▹ | StAsT 𖦹 '..Status_Gps..'\n▹ | MsGs 𖦹'..NumMsg..' \n▹ | Activity 𖦹 '..TotalMsg..'\n▹ | GaMeS 𖦹 '..Num_Games..''
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'en', callback_data=data.sender_user_id_.."/ideengphoto"},{text = 'ar', callback_data=data.sender_user_id_.."/idearpphoto"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageCaption?chat_id='..Chat_id..'&caption='..URL.escape(texte)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
-end,nil)   
-end,nil)   
-end,nil)   
-end
-end
-if Text and Text:match('(.*)/idearpphoto') then
-if tonumber(Text:match('(.*)/idearpphoto')) == tonumber(data.sender_user_id_) then
-tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = data.sender_user_id_,offset_ = 0,limit_ = 1},function(extra,taha,success) 
-tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_},function(arg,date) 
-tdcli_function ({ID = "GetChatMember",chat_id_ = data.chat_id_,user_id_ = data.sender_user_id_},function(arg,deata) 
-if deata.status_.ID == "ChatMemberStatusCreator" then 
-rtpa = 'منشئ'
-elseif deata.status_.ID == "ChatMemberStatusEditor" then 
-rtpa = 'ادمن' 
-elseif deata.status_.ID == "ChatMemberStatusMember" then 
-rtpa = 'عضو'
-end
-if deata.join_date_ ~= 0 then
-tarek = os.date('%Y-%m-%d', deata.join_date_)
-else
-tarek = 'لا يوجد ' 
-end
-if date.username_ then
-UserName_User = '@'..date.username_
-else
-UserName_User = 'لا يوجد'
-end
-
-local Id = data.sender_user_id_
-local NumMsg = database:get(bot_id..'VeCto:messageUser'..data.chat_id_..':'..data.sender_user_id_) or 0
-local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
-local message_edit = database:get(bot_id..'VeCto:message_edit'..data.chat_id_..data.sender_user_id_) or 0
-local Num_Games = database:get(bot_id.."Tshak:Add:Num"..data.chat_id_..data.sender_user_id_) or 0
-local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..data.chat_id_..":"..data.sender_user_id_) or 0
-local Total_Photp = (taha.total_count_ or 0)
-local Texting = {
-'صورتك فدشي 😘😔❤️',
-"صارلك شكد مخليه ",
-"وفالله 😔💘",
-"كشخه برب 😉💘",
-"دغيره شبي هذ 😒",
-"عمري الحلوين 💘",
-}
-local Description = Texting[math.random(#Texting)]
-local texte = '\n▹ |ايديك  . '..Id..'\n▹ | معرفك  . '..UserName_User..'\n▹ |رتبتك  . '..Status_Gps..'\n▹ | رسائلك  . '..NumMsg..' \n▹ | التفاعل . '..TotalMsg..'\n▹ |الالعاب  . '..Num_Games..''
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'en', callback_data=data.sender_user_id_.."/ideengphoto"},{text = 'ar', callback_data=data.sender_user_id_.."/idearpphoto"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageCaption?chat_id='..Chat_id..'&caption='..URL.escape(texte)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
-end,nil)   
-end,nil)   
-end,nil)   
-end
-end
-
-if Text and Text:match('(%d+)/idearp1@(%d+)') then
-local users = {string.match(Text,"^(%d+)/idearp1@(%d+)$")}
-if tonumber(users[1]) == tonumber(data.sender_user_id_) then
-tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = users[2],offset_ = 0,limit_ = 1},function(extra,taha,success) 
-tdcli_function ({ID = "GetUser",user_id_ = users[2]},function(arg,date) 
-tdcli_function ({ID = "GetChatMember",chat_id_ = data.chat_id_,user_id_ = users[2]},function(arg,deata) 
-if deata.status_.ID == "ChatMemberStatusCreator" then 
-rtpa = 'منشئ'
-elseif deata.status_.ID == "ChatMemberStatusEditor" then 
-rtpa = 'ادمن' 
-elseif deata.status_.ID == "ChatMemberStatusMember" then 
-rtpa = 'عضو'
-end
-if deata.join_date_ ~= 0 then
-tarek = os.date('%Y-%m-%d', deata.join_date_)
-else
-tarek = 'لا يوجد ' 
-end
-if date.username_ then
-UserName_User = '@'..date.username_
-else
-UserName_User = 'لا يوجد'
-end
-
-local Id = users[2]
-local NumMsg = database:get(bot_id..'VeCto:messageUser'..data.chat_id_..':'..users[2]) or 0
-local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
-local message_edit = database:get(bot_id..'VeCto:message_edit'..data.chat_id_..users[2]) or 0
-local Num_Games = database:get(bot_id.."Tshak:Add:Num"..data.chat_id_..users[2]) or 0
-local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..data.chat_id_..":"..users[2]) or 0
-local Total_Photp = (taha.total_count_ or 0)
-local Texting = {
-'صورتك فدشي 😘😔❤️',
-"صارلك شكد مخليه ",
-"وفالله 😔💘",
-"كشخه برب 😉💘",
-"دغيره شبي هذ 😒",
-"عمري الحلوين 💘",
-}
-local Description = Texting[math.random(#Texting)]
-local texte = '\n*▹ |ايديك  . '..Id..'\n▹ | معرفك  .* ['..UserName_User..']*\n▹ |رتبتك  . '..Status_Gps..'\n▹ | رسائلك  . '..NumMsg..' \n▹ | التفاعل . '..TotalMsg..'\n▹ |الالعاب  . '..Num_Games..'*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'en', callback_data=data.sender_user_id_.."/ideeng1@"..Id},{text = 'ar', callback_data=data.sender_user_id_.."/idearp1@"..Id},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(texte)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
-end,nil)   
-end,nil)   
-end,nil)   
-return false
-end
-end
-
-if Text and Text:match('(%d+)/ideeng1@(%d+)') then
-local users = {string.match(Text,"^(%d+)/ideeng1@(%d+)$")}
-if tonumber(users[1]) == tonumber(data.sender_user_id_) then
-tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = users[2],offset_ = 0,limit_ = 1},function(extra,taha,success) 
-tdcli_function ({ID = "GetUser",user_id_ = users[2]},function(arg,date) 
-tdcli_function ({ID = "GetChatMember",chat_id_ = data.chat_id_,user_id_ = users[2]},function(arg,deata) 
-if deata.status_.ID == "ChatMemberStatusCreator" then 
-rtpa = 'منشئ'
-elseif deata.status_.ID == "ChatMemberStatusEditor" then 
-rtpa = 'ادمن' 
-elseif deata.status_.ID == "ChatMemberStatusMember" then 
-rtpa = 'عضو'
-end
-if deata.join_date_ ~= 0 then
-tarek = os.date('%Y-%m-%d', deata.join_date_)
-else
-tarek = 'لا يوجد ' 
-end
-if date.username_ then
-UserName_User = '@'..date.username_
-else
-UserName_User = 'لا يوجد'
-end
-
-local Id = users[2]
-local NumMsg = database:get(bot_id..'VeCto:messageUser'..data.chat_id_..':'..users[2]) or 0
-local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
-local message_edit = database:get(bot_id..'VeCto:message_edit'..data.chat_id_..users[2]) or 0
-local Num_Games = database:get(bot_id.."Tshak:Add:Num"..data.chat_id_..users[2]) or 0
-local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..data.chat_id_..":"..users[2]) or 0
-local Total_Photp = (taha.total_count_ or 0)
-local Texting = {
-'صورتك فدشي 😘😔❤️',
-"صارلك شكد مخليه ",
-"وفالله 😔💘",
-"كشخه برب 😉💘",
-"دغيره شبي هذ 😒",
-"عمري الحلوين 💘",
-}
-local Description = Texting[math.random(#Texting)]
-local texte = '\n*▹ | Id 𖦹 '..Id..'\n▹ | UsErNaMe 𖦹 * ['..UserName_User..']*\n▹ | StAsT 𖦹 '..Status_Gps..'\n▹ | MsGs 𖦹'..NumMsg..' \n▹ | Activity 𖦹 '..TotalMsg..'\n▹ | GaMeS 𖦹 '..Num_Games..'*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'en', callback_data=data.sender_user_id_.."/ideeng1@"..Id},{text = 'ar', callback_data=data.sender_user_id_.."/idearp1@"..Id},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(texte)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
-end,nil)   
-end,nil)   
-end,nil)   
-return false
-end
-end
-
-if Text and Text:match('(.*)/ideeng') then
-if tonumber(Text:match('(.*)/ideeng')) == tonumber(data.sender_user_id_) then
-tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = data.sender_user_id_,offset_ = 0,limit_ = 1},function(extra,taha,success) 
-tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_},function(arg,date) 
-tdcli_function ({ID = "GetChatMember",chat_id_ = data.chat_id_,user_id_ = data.sender_user_id_},function(arg,deata) 
-if deata.status_.ID == "ChatMemberStatusCreator" then 
-rtpa = 'منشئ'
-elseif deata.status_.ID == "ChatMemberStatusEditor" then 
-rtpa = 'ادمن' 
-elseif deata.status_.ID == "ChatMemberStatusMember" then 
-rtpa = 'عضو'
-end
-if deata.join_date_ ~= 0 then
-tarek = os.date('%Y-%m-%d', deata.join_date_)
-else
-tarek = 'لا يوجد ' 
-end
-if date.username_ then
-UserName_User = '@'..date.username_
-else
-UserName_User = 'لا يوجد'
-end
-
-local Id = data.sender_user_id_
-local NumMsg = database:get(bot_id..'VeCto:messageUser'..data.chat_id_..':'..data.sender_user_id_) or 0
-local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
-local message_edit = database:get(bot_id..'VeCto:message_edit'..data.chat_id_..data.sender_user_id_) or 0
-local Num_Games = database:get(bot_id.."Tshak:Add:Num"..data.chat_id_..data.sender_user_id_) or 0
-local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..data.chat_id_..":"..data.sender_user_id_) or 0
-local Total_Photp = (taha.total_count_ or 0)
-local Texting = {
-'صورتك فدشي 😘😔❤️',
-"صارلك شكد مخليه ",
-"وفالله 😔💘",
-"كشخه برب 😉💘",
-"دغيره شبي هذ 😒",
-"عمري الحلوين 💘",
-}
-local Description = Texting[math.random(#Texting)]
-local texte = '\n*▹ | Id 𖦹 '..Id..'\n▹ | UsErNaMe 𖦹 * ['..UserName_User..']*\n▹ | StAsT 𖦹 '..Status_Gps..'\n▹ | MsGs 𖦹'..NumMsg..' \n▹ | Activity 𖦹 '..TotalMsg..'\n▹ | GaMeS 𖦹 '..Num_Games..'*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'en', callback_data=data.sender_user_id_.."/ideeng"},{text = 'ar', callback_data=data.sender_user_id_.."/idearp"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(texte)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
-end,nil)   
-end,nil)   
-end,nil)   
-end
-end
-if Text and Text:match('(.*)/idearp') then
-if tonumber(Text:match('(.*)/idearp')) == tonumber(data.sender_user_id_) then
-tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = data.sender_user_id_,offset_ = 0,limit_ = 1},function(extra,taha,success) 
-tdcli_function ({ID = "GetUser",user_id_ = data.sender_user_id_},function(arg,date) 
-tdcli_function ({ID = "GetChatMember",chat_id_ = data.chat_id_,user_id_ = data.sender_user_id_},function(arg,deata) 
-if deata.status_.ID == "ChatMemberStatusCreator" then 
-rtpa = 'منشئ'
-elseif deata.status_.ID == "ChatMemberStatusEditor" then 
-rtpa = 'ادمن' 
-elseif deata.status_.ID == "ChatMemberStatusMember" then 
-rtpa = 'عضو'
-end
-if deata.join_date_ ~= 0 then
-tarek = os.date('%Y-%m-%d', deata.join_date_)
-else
-tarek = 'لا يوجد ' 
-end
-if date.username_ then
-UserName_User = '@'..date.username_
-else
-UserName_User = 'لا يوجد'
-end
-
-local Id = data.sender_user_id_
-local NumMsg = database:get(bot_id..'VeCto:messageUser'..data.chat_id_..':'..data.sender_user_id_) or 0
-local TotalMsg = Total_message(NumMsg)
-local Status_Gps = database:get(bot_id.."VeCto:Comd:New:rt:User:"..data.chat_id_..Id) or Get_Rank(Id,data.chat_id_)
-local message_edit = database:get(bot_id..'VeCto:message_edit'..data.chat_id_..data.sender_user_id_) or 0
-local Num_Games = database:get(bot_id.."Tshak:Add:Num"..data.chat_id_..data.sender_user_id_) or 0
-local Add_Mem = database:get(bot_id.."VeCto:Add:Memp"..data.chat_id_..":"..data.sender_user_id_) or 0
-local Total_Photp = (taha.total_count_ or 0)
-local Texting = {
-'صورتك فدشي 😘😔❤️',
-"صارلك شكد مخليه ",
-"وفالله 😔💘",
-"كشخه برب 😉💘",
-"دغيره شبي هذ 😒",
-"عمري الحلوين 💘",
-}
-local Description = Texting[math.random(#Texting)]
-local texte = '\n*▹ |ايديك  . '..Id..'\n▹ | معرفك  .* ['..UserName_User..']*\n▹ |رتبتك  . '..Status_Gps..'\n▹ | رسائلك  . '..NumMsg..' \n▹ | التفاعل . '..TotalMsg..'\n▹ |الالعاب  . '..Num_Games..'*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = 'en', callback_data=data.sender_user_id_.."/ideeng"},{text = 'ar', callback_data=data.sender_user_id_.."/idearp"},
-},
-}
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(texte)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
-end,nil)   
-end,nil)   
-end,nil)   
-end
-end
 
 
 
