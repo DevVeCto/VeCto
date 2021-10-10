@@ -5479,6 +5479,7 @@ end
 
 
 
+
 if text == ("تصفيه") and msg.reply_to_message_id_ == 0 and BasicConstructor(msg) then
 send(msg.chat_id_, msg.id_,"\n• تم تنزيل جميع الرتب  \n")
 database:del(bot_id.."VeCto:Constructor"..msg.chat_id_)
@@ -5486,6 +5487,9 @@ database:del(bot_id.."VeCto:Manager"..msg.chat_id_)
 database:del(bot_id.."VeCto:Mod:User"..msg.chat_id_)
 database:del(bot_id.."VeCto:Special:User"..msg.chat_id_)
 end
+
+
+
 
 
 if text and text:match('^الحساب (%d+)$') then
@@ -5499,6 +5503,9 @@ ID = "OpenChat",
 chat_id_ = chat_id
 }, cb, nil)
 end
+
+
+
 
 
 if text == "تنظيف التعديل" then
@@ -5521,6 +5528,9 @@ DeleteMessage(msg.chat_id_,Msgs2)
 end,nil)  
 send(msg.chat_id_, msg.id_,'*• تم تنظيف جميع الرسائل المعدله*')
 end
+
+
+
 
 
 if text == 'ايديي' then
@@ -9761,7 +9771,6 @@ end
 end --- Chat_Type = 'UserBot' 
 end
 end
-function tdcli_update_callback(data)
 if data.ID == "UpdateNewCallbackQuery" then
 local Chat_id = data.chat_id_
 local From_id = data.id_
