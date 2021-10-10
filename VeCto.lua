@@ -8739,6 +8739,10 @@ dofile("VeCto.lua")
 send(msg.chat_id_, msg.id_, "* • تم التحديث*")
 end
 
+
+
+
+
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then  
 
 Text = "ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ sᴏᴜʀᴄʀ 𝐯𝐞𝐜𝐭𝐨 \n\n[•  𝐯𝐞𝐜𝐭𝐨 ᴄʜᴀɴɴᴇʟ](http://t.me/team_VeCto)\n\n[•  ɪɴғᴏ sᴏᴜʀᴄᴇ](http://t.me/tools_VeCto)\n\n[•  𝐯𝐞𝐜𝐭𝐨 ᴅᴇᴠᴇʟᴏᴘᴇʀ](http://t.me/mmssds)\n\n[•  ʙᴏᴛ 𝐯𝐞𝐜𝐭𝐨](http://t.me/TOWS11bot)"
@@ -8747,8 +8751,9 @@ keyboard.inline_keyboard = {
 {{text = '• sᴏᴜʀᴄʀ 𝐯𝐞𝐜𝐭𝐨',url="t.me/TEAM_VeCto/3"}},
 }
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/TEAM_VeCto&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/TeAM_VeCto&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
+
 
 
 
@@ -8762,13 +8767,14 @@ if audios.Info == true then
 local Text ='*• تم اختيار المقطع الصوتي لك*'
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '- VeCto TeAm .',url="t.me/team_VeCto"}},
+{{text = '- VeCto TeAm .',url="t.me/Team_VeCto"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice='..URL.escape(audios.info)..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 end
 end
+
 
 
 
