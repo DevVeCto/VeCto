@@ -268,20 +268,10 @@ print("\27[34m"..[[
 >> Best Source in Telegram
 >> Features fast and powerful
 
-   ________         __         ______   __        ________        __    __ 
-/        |       /  |       /      \ /  |      /        |      /  |  /  |
-$$$$$$$$/_______ $$ |____  /$$$$$$  |$$ |   __ $$$$$$$$/       $$ |  $$ |
-   $$ | /       |$$      \ $$ |__$$ |$$ |  /  |$$ |__          $$  \/$$/ 
-   $$ |/$$$$$$$/ $$$$$$$  |$$    $$ |$$ |_/$$/ $$    |          $$  $$<  
-   $$ |$$      \ $$ |  $$ |$$$$$$$$ |$$   $$<  $$$$$/            $$$$  \ 
-   $$ | $$$$$$  |$$ |  $$ |$$ |  $$ |$$$$$$  \ $$ |_____        $$ /$$  |
-   $$ |/     $$/ $$ |  $$ |$$ |  $$ |$$ | $$  |$$       |      $$ |  $$ |
-   $$/ $$$$$$$/  $$/   $$/ $$/   $$/ $$/   $$/ $$$$$$$$/       $$/   $$/ 
-                                                                                                                                                                         
->> CH > @Tshakex
->> CH > @Tshakex_files 
->> DEVELOPER > @SSSSF
->> DEVELOPER > @SSSSJ
+
+>> CH > @aaaaw
+>> CH > @xxxxn 
+>> DEVELOPER > @XXKXX
 ]].."\27[m")
 sudos = dofile("sudo.lua")
 if Sudo then
@@ -796,19 +786,10 @@ local function connect_tcp(socket, parameters)
 >> Best Source in Telegram
 >> Features fast and powerful
 
- /$$$$$$$$        /$$                 /$$                
-|__  $$__/       | $$                | $$                
-   | $$  /$$$$$$$| $$$$$$$   /$$$$$$ | $$   /$$  /$$$$$$ 
-   | $$ /$$_____/| $$__  $$ |____  $$| $$  /$$/ /$$__  $$
-   | $$|  $$$$$$ | $$  \ $$  /$$$$$$$| $$$$$$/ | $$$$$$$$
-   | $$ \____  $$| $$  | $$ /$$__  $$| $$_  $$ | $$_____/
-   | $$ /$$$$$$$/| $$  | $$|  $$$$$$$| $$ \  $$|  $$$$$$$
-   |__/|_______/ |__/  |__/ \_______/|__/  \__/ \_______/
-                                                                                                                                                                         
->> CH > @TSHAKETEAM
->> CH > @ZX_XX 
->> DEVELOPER > @TAHAJ20
->> DEVELOPER > @VVWVV
+                                                                                                                                         
+>> CH > @aaaaw
+>> CH > @xxxxn 
+>> DEVELOPER > @XXKXX
 ]].."\27[m")
 	os.exit()
     --redis.error('could not connect to '..host..':'..port..' ['..err..']')
