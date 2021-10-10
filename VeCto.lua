@@ -8847,14 +8847,18 @@ Text = [[
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{text = '⁵', callback_data="/help5"},{text = '⁶', callback_data="/help6"}},
-{{text = 'VeCto TeAm .', url="t.me/TeAm_VeCto"}},
+{text = 'م1', callback_data=msg.sender_user_id_.."/help1"},{text = 'م2', callback_data=msg.sender_user_id_.."/help2"},{text = 'م3', callback_data=msg.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=msg.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},
+},
 }
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-return false
+end
 end
 
 if text == 'م1' and Addictive(msg) then  
@@ -9152,14 +9156,20 @@ local Teext =[[
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{text = '⁵', callback_data="/help5"},{text = '⁶', callback_data="/help6"}},
-{{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '-VeCto TeAm .', url="t.me/TeAm_VeCto"}},
+{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
+},
+{
+{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+end
 end
 if DAata == '/help2' then
 if not Mod(data) then
@@ -9228,14 +9238,20 @@ local Teext =[[
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{text = '⁵', callback_data="/help5"},{text = '⁶', callback_data="/help6"}},
-{{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '-VeCto TeAm .', url="t.me/TeAm_VeCto"}},
+{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
+},
+{
+{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+end
 end
 if DAata == '/help3' then
 if not Mod(data) then
@@ -9279,14 +9295,20 @@ local Teext =[[
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{text = '⁵', callback_data="/help5"},{text = '⁶', callback_data="/help6"}},
-{{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '-VeCto TeAm .', url="t.me/TeAm_VeCto"}},
+{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
+},
+{
+{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+end
 end
 if DAata == '/help4' then
 if not Mod(data) then
@@ -9319,14 +9341,20 @@ local Teext =[[
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{text = '⁵', callback_data="/help5"},{text = '⁶', callback_data="/help6"}},
-{{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '-VeCto TeAm .', url="t.me/TeAm_VeCto"}},
+{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
+},
+{
+{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+end
 end
 if DAata == '/help5' then
 if not Mod(data) then
@@ -9382,14 +9410,20 @@ local Teext =[[
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{text = '⁵', callback_data="/help5"},{text = '⁶', callback_data="/help6"}},
-{{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '-VeCto TeAm .', url="t.me/TeAm_VeCto"}},
+{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
+},
+{
+{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+end
 end
 if DAata == '/help6' then
 if not Mod(data) then
@@ -9408,15 +9442,20 @@ local Teext =[[
 [• TeAm VeCto .](t.me/TeAm_VeCto)
 ]]
 keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{text = '⁵', callback_data="/help5"},{text = '⁶', callback_data="/help6"}},
-{{text = 'الاوامر الرئيسيه', callback_data="/help"}},
-{{text = '-VeCto TeAm .', url="t.me/TeAm_VeCto"}},
+{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
+},
+{
+{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
 },
 }
 return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+end
 end
 
 if DAata == '/help' then
@@ -9439,11 +9478,18 @@ local Teext =[[
 ]]
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '¹', callback_data="/help1"},{text = '²', callback_data="/help2"},{text = '³', callback_data="/help3"}},
-{{text = '⁴', callback_data="/help4"},{text = '⁵', callback_data="/help5"},{text = '⁶', callback_data="/help6"}},
-{{text = 'VeCto TeAm .', url="t.me/TeAm_VeCto"}},
+{text = 'م1', callback_data=msg.sender_user_id_.."/help1"},{text = 'م2', callback_data=msg.sender_user_id_.."/help2"},{text = 'م3', callback_data=msg.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=msg.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},{text = '6م', callback_data=data.sender_user_id_.."/help6"},
+},
 }
-return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
 end
 
 
