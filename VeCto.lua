@@ -8750,13 +8750,13 @@ end
 
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then  
 
-Text = "ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ sᴏᴜʀᴄʀ 𝐯𝐞𝐜𝐭𝐨 \n\n[•  𝐯𝐞𝐜𝐭𝐨 ᴄʜᴀɴɴᴇʟ](http://t.me/team_VeCto)\n\n[•  ɪɴғᴏ sᴏᴜʀᴄᴇ](http://t.me/tools_VeCto)\n\n[•  𝐯𝐞𝐜𝐭𝐨 ᴅᴇᴠᴇʟᴏᴘᴇʀ](http://t.me/mmssds)\n\n[•  ʙᴏᴛ 𝐯𝐞𝐜𝐭𝐨](http://t.me/TOWS11bot)"
+Text = "ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ sᴏᴜʀᴄʀ 𝐯𝐞𝐜𝐭𝐨"
 keyboard = {} 
 keyboard.inline_keyboard = {
 {{text = '• sᴏᴜʀᴄʀ 𝐯𝐞𝐜𝐭𝐨',url="t.me/TeAM_VeCto"}},
 }
 local msg_id = msg.id_/2097152/0.5
-https.reques
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/TeAm_VeCto&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
 
