@@ -534,7 +534,7 @@ send(msg.chat_id_, msg.id_,NameUserr.."\n"..text)
 return false
 end
 else
-send(msg.chat_id_, msg.id_,"⌔︙ الحساب محذوف يرجى استخدام الامر بصوره صحيحه")
+send(msg.chat_id_, msg.id_,"• الحساب محذوف يرجى استخدام الامر بصوره صحيحه")
 end
 end,nil)   
 end -- end
@@ -9781,7 +9781,6 @@ end
 end --- Chat_Type = 'UserBot' 
 end
 end
-function tdcli_update_callback(data)
 if data.ID == "UpdateNewCallbackQuery" then
 local Chat_id = data.chat_id_
 local From_id = data.id_
