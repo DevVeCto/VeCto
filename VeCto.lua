@@ -8745,9 +8745,6 @@ dofile("VeCto.lua")
 send(msg.chat_id_, msg.id_, "* • تم التحديث*")
 end
 
-
-
-
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then  
 
 Text = "ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ sᴏᴜʀᴄʀ 𝐯𝐞𝐜𝐭𝐨"
@@ -8763,7 +8760,7 @@ end
 
 
 
-if text == 'فويس'  then
+if text == 'فويس' then
 data,res = https.request('https://vvvzvv.ml/amirVois/Teland.php')
 if res == 200 then
 audios = json:decode(data)
@@ -8778,6 +8775,7 @@ https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. ms
 end
 end
 end
+
 
 
 
@@ -9792,6 +9790,7 @@ end
 end --- Chat_Type = 'UserBot' 
 end
 end
+function tdcli_update_callback(data)
 if data.ID == "UpdateNewCallbackQuery" then
 local Chat_id = data.chat_id_
 local From_id = data.id_
@@ -10191,7 +10190,7 @@ print("\27[34m"..[[
 >> The Bot is Running
 >> Bot source > VeCto
 >>Source channel > @TeAm_VeCto
->>Source developer > @MmSsDs
+>>Source developer > @mmssds
 
 
 ]].."\27[m")
