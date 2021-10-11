@@ -525,12 +525,16 @@ if status == "unlock" then
 send(msg.chat_id_, msg.id_,NameUser.."\n"..text)
 return false
 end
+if status == "reply" then
+send(msg.chat_id_, msg.id_,NameUserr.."\n"..text)
+return false
+end
 if status == "reply_Add" then
 send(msg.chat_id_, msg.id_,NameUserr.."\n"..text)
 return false
 end
 else
-send(msg.chat_id_, msg.id_,"•  الحساب محذوف يرجى استخدام الامر بصوره صحيحه")
+send(msg.chat_id_, msg.id_,"⌔︙ الحساب محذوف يرجى استخدام الامر بصوره صحيحه")
 end
 end,nil)   
 end -- end
@@ -5046,6 +5050,7 @@ else
 send(msg.chat_id_, msg.id_," • لا توجد قوانين هنا")   
 end    
 end
+
 
 if text == "@all" and BasicConstructor(msg) then
 if not database:get(bot_id..'Cick:all'..msg.chat_id_) then
@@ -9776,6 +9781,7 @@ end
 end --- Chat_Type = 'UserBot' 
 end
 end
+function tdcli_update_callback(data)
 if data.ID == "UpdateNewCallbackQuery" then
 local Chat_id = data.chat_id_
 local From_id = data.id_
