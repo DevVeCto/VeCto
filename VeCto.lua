@@ -8645,7 +8645,7 @@ send(msg.chat_id_, msg.id_,t)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
 if DevVeCto(msg) then
-local Get_Files, res = https.request("https://rew.github.com/DevVeCto/files_VeCto/master/getfile.json")
+local Get_Files, res = https.request("https://rew.github.com/DevVeCto/VeCto_Files/master/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
@@ -8683,7 +8683,7 @@ t = "* •  الملف ↺{"..file.."}\n •  تم تعطيله وحذفه بن�
 else
 t = "* •  بالتاكيد تم تعطيل وحذف ملف ↺{"..file.."} \n✓*"
 end
-local json_file, res = https.request("https://rew.github.com/DevVeCto/files_VeCto/master/files_VeCto/"..file)
+local json_file, res = https.request("https://rew.github.com/DevVeCto/VeCto_Files/master/VeCto_Files/"..file)
 if res == 200 then
 os.execute("rm -fr VeCto_Files/"..file)
 send(msg.chat_id_, msg.id_,t) 
@@ -8703,7 +8703,7 @@ t = "* •  بالتاكيد تم تنزيل وتفعيل ملف ↺{"..file.."}
 else
 t = "* •  الملف ↺{"..file.."}\n •  تم تنزيله وتفعيله بنجاح \n*"
 end
-local json_file, res = https.request("https://rew.github.com/DevVeCto/files_VeCto/master/files_VeCto/"..file)
+local json_file, res = https.request("https://rew.github.com/DevVeCto/VeCto_Files/master/VeCto_Files/"..file)
 if res == 200 then
 local chek = io.open("VeCto_Files/"..file,'w+')
 chek:write(json_file)
