@@ -8746,22 +8746,22 @@ send(msg.chat_id_, msg.id_, "* • تم التحديث*")
 end
 
 
-
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then  
 
 Text = "ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ sᴏᴜʀᴄʀ 𝐯𝐞𝐜𝐭𝐨 \n\n[•  𝐯𝐞𝐜𝐭𝐨 ᴄʜᴀɴɴᴇʟ](http://t.me/team_VeCto)\n\n[•  ɪɴғᴏ sᴏᴜʀᴄᴇ](http://t.me/tools_VeCto)\n\n[•  𝐯𝐞𝐜𝐭𝐨 ᴅᴇᴠᴇʟᴏᴘᴇʀ](http://t.me/mmssds)\n\n[•  ʙᴏᴛ 𝐯𝐞𝐜𝐭𝐨](http://t.me/TOWS11bot)"
 keyboard = {} 
 keyboard.inline_keyboard = {
-{{text = '• sᴏᴜʀᴄʀ 𝐯𝐞𝐜𝐭𝐨',url="t.me/TEAM_VeCto/3"}},
+{{text = '• sᴏᴜʀᴄʀ 𝐯𝐞𝐜𝐭𝐨',url="t.me/TeAM_VeCto"}},
 }
 local msg_id = msg.id_/2097152/0.5
 https.reques
+end
 
 
 
 
 
-if text == 'فويس' then
+if text == 'فويس'  then
 data,res = https.request('https://vvvzvv.ml/amirVois/Teland.php')
 if res == 200 then
 audios = json:decode(data)
@@ -8776,6 +8776,7 @@ https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. ms
 end
 end
 end
+
 
 
 
