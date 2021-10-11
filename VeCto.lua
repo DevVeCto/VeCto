@@ -5463,6 +5463,7 @@ end
 
 
 
+
 if text == 'رابط الحذف' or text == 'رابط حذف' then
 t =[[
 *رابط الحذف في جميع مواقع التواصل 
@@ -5476,6 +5477,7 @@ t =[[
 send(msg.chat_id_, msg.id_,t) 
 return false
 end
+
 
 
 
@@ -5503,6 +5505,7 @@ ID = "OpenChat",
 chat_id_ = chat_id
 }, cb, nil)
 end
+
 
 
 
@@ -8401,6 +8404,7 @@ https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. 
 end
 end
 end
+
 if text == "غنيلي" then
 data,res = https.request('https://Black-source.tk/BlackTeAM/audios.php')
 if res == 200 then
@@ -8416,6 +8420,8 @@ https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. ms
 end
 end
 end
+
+
 if text and text:match("^كول (.*)$") then
 local Textxt = text:match("^كول (.*)$")
 send(msg.chat_id_, msg.id_, Textxt)
@@ -8741,8 +8747,6 @@ end
 
 
 
-
-
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then  
 
 Text = "ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ sᴏᴜʀᴄʀ 𝐯𝐞𝐜𝐭𝐨 \n\n[•  𝐯𝐞𝐜𝐭𝐨 ᴄʜᴀɴɴᴇʟ](http://t.me/team_VeCto)\n\n[•  ɪɴғᴏ sᴏᴜʀᴄᴇ](http://t.me/tools_VeCto)\n\n[•  𝐯𝐞𝐜𝐭𝐨 ᴅᴇᴠᴇʟᴏᴘᴇʀ](http://t.me/mmssds)\n\n[•  ʙᴏᴛ 𝐯𝐞𝐜𝐭𝐨](http://t.me/TOWS11bot)"
@@ -8751,9 +8755,7 @@ keyboard.inline_keyboard = {
 {{text = '• sᴏᴜʀᴄʀ 𝐯𝐞𝐜𝐭𝐨',url="t.me/TEAM_VeCto/3"}},
 }
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/TeAM_VeCto&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
-
+https.reques
 
 
 
@@ -8779,9 +8781,17 @@ end
 
 
 
-if text == 'الاوامر' then
-if Addictive(msg) then
-local Text =[[
+if text == 'الاوامر' and Addictive(msg) then  
+if AddChannel(msg.sender_user_id_) == false then
+local textchuser = database:get(bot_id..'text:ch:user')
+if textchuser then
+send(msg.chat_id_, msg.id_,'['..textchuser..']')
+else
+send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺ ['..database:get(bot_id..'add:ch:username')..']')
+end
+return false
+end
+Text = [[
 *•  هناك {5} اوامر لعرضها*
 
 *• م1 ↺لعرض اوامر الحمايه*
@@ -8789,7 +8799,6 @@ local Text =[[
 *•  م3 ↺لعرض اوامر المدراء*
 *• م4 ↺لعرض اوامر المنشئين*
 *• م5 ↺لعرض اوامر المطورين*
-* • م6 ↺ لعرض اوامر جديده*
 [• Ch Source](t.me/TeAm_VeCto)
 ]]
 send(msg.chat_id_, msg.id_,Text)
