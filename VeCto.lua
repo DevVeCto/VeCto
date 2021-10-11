@@ -1170,7 +1170,26 @@ send(msg.chat_id_, msg.id_,t)
 end,nil) 
 end 
 end 
--------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+if msg.content_.ID == "MessageChatAddMembers" and not database:get(bot_id..'thebot') then 
+if msg.content_.members_[0].id_ == tonumber(bot_id) then 
+tdcli_function ({ID = "GetUser",user_id_ = bot_id,},function(arg,data) 
+tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = bot_id,offset_ = 0,limit_ = 1},function(extra,bo,success) 
+local Te = "• هلا حات اني بوت حمايه كروبات\n• وضيفتي حماية القروبات من السبام والتفليش والخ...\n• لتفعيل البوت اضفني الى قروباتك قم برفعي مشرف ثم ارسل تفعيل"
+if bo.photos_[0] then
+x = {} 
+x.inline_keyboard = {
+{{text ="- اضفني ",url="https://t.me/"..data.username_.."?startgroup=new"}},
+}
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id='..msg.chat_id_..'&photo='..bo.photos_[0].sizes_[1].photo_.persistent_id_..'&caption='..URL.escape(Te)..'&message_id='..msg.id_..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(x)) 
+else
+send(msg.chat_id_, msg.id_,Te)
+end
+end,nil)
+end,nil)
+end
+end
+--------------------------------------------------------------------------------------------------------------
 if msg.content_.ID == "MessagePinMessage" then
 if Constructor(msg) or tonumber(msg.sender_user_id_) == tonumber(bot_id) then 
 database:set(bot_id.."VeCto:Pin:Id:Msg"..msg.chat_id_,msg.content_.message_id_)
@@ -1413,25 +1432,6 @@ database:sadd(bot_id.."VeCto:List:Cmd:Group:New"..msg.chat_id_,text)
 send(msg.chat_id_, msg.id_," • تم حفظ الامر")  
 database:del(bot_id.."VeCto:Set:Cmd:Group1"..msg.chat_id_..":"..msg.sender_user_id_)
 return false
-end
--------------------------------------------------------
-if msg.content_.ID == "MessageChatAddMembers" and not database:get(bot_id..'thebot') then 
-if msg.content_.members_[0].id_ == tonumber(bot_id) then 
-tdcli_function ({ID = "GetUser",user_id_ = bot_id,},function(arg,data) 
-tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = bot_id,offset_ = 0,limit_ = 1},function(extra,bo,success) 
-local Te = "• هلا حات اني بوت حمايه كروبات\n• وضيفتي حماية القروبات من السبام والتفليش والخ...\n• لتفعيل البوت اضفني الى قروباتك قم برفعي مشرف ثم ارسل تفعيل"
-if bo.photos_[0] then
-x = {} 
-x.inline_keyboard = {
-{{text ="- اضفني ",url="https://t.me/"..data.username_.."?startgroup=new"}},
-}
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id='..msg.chat_id_..'&photo='..bo.photos_[0].sizes_[1].photo_.persistent_id_..'&caption='..URL.escape(Te)..'&message_id='..msg.id_..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(x)) 
-else
-send(msg.chat_id_, msg.id_,Te)
-end
-end,nil)
-end,nil)
-end
 end
 --------------------------------------------------------------------------------------------------------------
 if Chat_Type == 'GroupBot' then
@@ -8745,6 +8745,9 @@ dofile("VeCto.lua")
 send(msg.chat_id_, msg.id_, "* • تم التحديث*")
 end
 
+
+
+
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then  
 
 Text = "ᴡᴇʟᴄᴏᴍᴇ ᴛᴏ sᴏᴜʀᴄʀ 𝐯𝐞𝐜𝐭𝐨"
@@ -8755,6 +8758,8 @@ keyboard.inline_keyboard = {
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/TeAm_VeCto&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
+
+
 
 
 
@@ -8775,7 +8780,6 @@ https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. ms
 end
 end
 end
-
 
 
 
@@ -9790,7 +9794,6 @@ end
 end --- Chat_Type = 'UserBot' 
 end
 end
-function tdcli_update_callback(data)
 if data.ID == "UpdateNewCallbackQuery" then
 local Chat_id = data.chat_id_
 local From_id = data.id_
