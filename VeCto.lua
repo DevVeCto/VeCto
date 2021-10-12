@@ -2941,7 +2941,8 @@ Reply_Status(msg,userid,"reply"," • تم تنزيله من المطورين")
 return false 
 end
 
-if text == ("رفع منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and creatorA(msg) then  
+
+if text == ("رفع منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2958,7 +2959,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
 end
-if text and text:match("^رفع منشئ اساسي @(.*)$") and creatorA(msg) then  
+if text and text:match("^رفع منشئ اساسي @(.*)$") then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2984,7 +2985,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
 return false
 end
-if text and text:match("^رفع منشئ اساسي (%d+)$") and creatorA(msg) then  
+if text and text:match("^رفع منشئ اساسي (%d+)$") then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -2999,7 +3000,7 @@ database:sadd(bot_id.."VeCto:Basic:Constructor"..msg.chat_id_, userid)
 Reply_Status(msg,userid,"reply","• تم ترقيته منشئ اساسي")  
 return false
 end
-if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and creatorA(msg) then  
+if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3016,7 +3017,7 @@ end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي @(.*)$") and creatorA(msg) then  
+if text and text:match("^تنزيل منشئ اساسي @(.*)$") then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
@@ -3039,7 +3040,7 @@ end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي (%d+)$") and creatorA(msg) then  
+if text and text:match("^تنزيل منشئ اساسي (%d+)$") then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
