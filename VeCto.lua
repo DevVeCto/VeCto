@@ -532,7 +532,7 @@ send(msg.chat_id_, msg.id_,NameUser.."\n"..text)
 return false
 end
 if status == "reply" then
-inlin = {{{text = '- اضغط هنا للمسح.',callback_data=msg.sender_user_id_..":cancelRd:del"}}, }
+inlin = {{{text = '- اضغط هنا للحذف.',callback_data=msg.sender_user_id_..":cancelRd:del"}}, }
 send_inlin_key(msg.chat_id_,NameUserr.."\n"..text,inlin,msg.id_)
 return false
 end
