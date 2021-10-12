@@ -48,15 +48,14 @@ end
 function dl_cb(t,s)
 end
 function DevVeCtoe(user)  
-local brok_Sudo = false  
+local Taha_Sudo = false  
 for k,v in pairs(List_Sudos) do  
 if user == v then  
-brok_Sudo = true  
+Taha_Sudo = true  
 end  
 end  
-return brok_Sudo  
+return Taha_Sudo  
 end 
-
 function VIP_DeV(msg)  
 local h_Sudo = false  
 for k,v in pairs(List_Sudos) do  
@@ -99,7 +98,7 @@ end
 end
 function Constructor(msg)
 local hash = database:sismember(bot_id.."VeCto:Constructor"..msg.chat_id_, msg.sender_user_id_) 
-if hash or Bot(msg) or DevVeCto(msg) or DevBot(msg) or BasicConstructor(msg) or VIP_DeV(msg) then        
+if hash or Bot(msg) or DevVeCto(msg) or DevBot(msg) or BasicConstructor(msg) or VIP_DeV(msg) then             
 return true    
 else    
 return false    
@@ -107,7 +106,7 @@ end
 end
 function Owner(msg)
 local hash = database:sismember(bot_id.."VeCto:Manager"..msg.chat_id_,msg.sender_user_id_)    
-if hash or Bot(msg) or DevVeCto(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or VIP_DeV(msg) then        
+if hash or Bot(msg) or DevVeCto(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or VIP_DeV(msg) then             
 return true    
 else    
 return false    
@@ -115,7 +114,7 @@ end
 end
 function Addictive(msg)
 local hash = database:sismember(bot_id.."VeCto:Mod:User"..msg.chat_id_,msg.sender_user_id_)    
-if hash or Bot(msg) or DevVeCto(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or VIP_DeV(msg) then        
+if hash or Bot(msg) or DevVeCto(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or VIP_DeV(msg) then             
 return true    
 else    
 return false    
@@ -123,7 +122,7 @@ end
 end
 function cleaner(msg)
 local hash = database:sismember(bot_id.."VeCto:MN:TF"..msg.chat_id_,msg.sender_user_id_)    
-if hash or Bot(msg) or DevVeCto(msg) or DevBot(msg) or BasicConstructor(msg) or VIP_DeV(msg) then        
+if hash or Bot(msg) or DevVeCto(msg) or DevBot(msg) or BasicConstructor(msg) or VIP_DeV(msg) then             
 return true    
 else    
 return false    
@@ -131,7 +130,7 @@ end
 end
 function Vips(msg)
 local hash = database:sismember(bot_id.."VeCto:Special:User"..msg.chat_id_,msg.sender_user_id_) 
-if hash or Bot(msg) or  DevVeCto(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or Addictive(msg) or VIP_DeV(msg) then        
+if hash or Bot(msg) or  DevVeCto(msg) or DevBot(msg) or BasicConstructor(msg) or Constructor(msg) or Owner(msg) or Addictive(msg) or VIP_DeV(msg) then             
 return true 
 else 
 return false 
@@ -8448,7 +8447,6 @@ https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. ms
 end
 end
 end
-
 
 if text and text:match("^كول (.*)$") then
 local Textxt = text:match("^كول (.*)$")
