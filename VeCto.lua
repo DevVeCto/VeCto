@@ -703,7 +703,7 @@ Chat_Type = 'GroupBot'
 end
 end
 if database:get(bot_id.."VeCto:VeCto:Bc:Grops:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
-if text == "الغاء" or text == "الغاء ⌔" then   
+if text == "الغاء" or text == "• الغاء" then   
 send(msg.chat_id_, msg.id_," • تم الغاء الاذاعه") 
 database:del(bot_id.."VeCto:VeCto:Bc:Grops:Pin" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 return false
@@ -1267,7 +1267,7 @@ end
 end 
 
 if database:get(bot_id.."VeCto:VeCto:Bc:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
-if text == "الغاء" or text == "الغاء ⌔" then   
+if text == "الغاء" or text == "• الغاء" then   
 send(msg.chat_id_, msg.id_," • تم الغاء الاذاعه للخاص") 
 database:del(bot_id.."VeCto:VeCto:Bc:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 return false
@@ -1301,7 +1301,7 @@ return false
 end
 
 if database:get(bot_id.."VeCto:VeCto:Bc:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
-if text == "الغاء" or text == "الغاء ⌔" then   
+if text == "الغاء" or text == "• الغاء" then   
 send(msg.chat_id_, msg.id_," • تم الغاء الاذاعه") 
 database:del(bot_id.."VeCto:VeCto:Bc:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 return false
@@ -1335,7 +1335,7 @@ return false
 end
 
 if database:get(bot_id.."VeCto:VeCto:Fwd:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
-if text == "الغاء" or text == "الغاء ⌔" then   
+if text == "الغاء" or text == "• الغاء" then   
 send(msg.chat_id_, msg.id_," • تم الغاء الاذاعه") 
 database:del(bot_id.."VeCto:VeCto:Fwd:Grops" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 return false  
@@ -1356,7 +1356,7 @@ end
 return false
 end
 if database:get(bot_id.."VeCto:VeCto:Fwd:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) then 
-if text == "الغاء" or text == "الغاء ⌔" then   
+if text == "الغاء" or text == "• الغاء" then   
 send(msg.chat_id_, msg.id_," • تم الغاء الاذاعه") 
 database:del(bot_id.."VeCto:VeCto:Fwd:Pv" .. msg.chat_id_ .. ":" .. msg.sender_user_id_) 
 return false  
@@ -1411,7 +1411,7 @@ return false
 end
 end
 if database:get(bot_id.."VeCto:Set:Name:Bot"..msg.sender_user_id_) then 
-if text == "الغاء" or text == "الغاء ⌔" then   
+if text == "الغاء" or text == "• الغاء" then   
 send(msg.chat_id_, msg.id_," •  تم الغاء حفظ اسم البوت") 
 database:del(bot_id.."VeCto:Set:Name:Bot"..msg.sender_user_id_) 
 return false  
@@ -5085,8 +5085,6 @@ end,nil)
 end
 end
 
-
-
 if text == "ترتيب الاوامر" and Constructor(msg) then
 database:set(bot_id.."VeCto:Set:Cmd:Group:New1"..msg.chat_id_..":ا","ايدي")
 database:sadd(bot_id.."VeCto:List:Cmd:Group:New"..msg.chat_id_,"ا")
@@ -5458,18 +5456,6 @@ end
 
 
 
-if text == "مبرمج السورس" or text == "مطور السورس" or text == "وين المبرمج" or text == "المبرمج" then   
-   
-Text = "\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n• [Developer 𝚂𝚘𝚞𝚛𝚌𝚎 .](http://t.me/MMSSDS) •\n ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉"
-keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = 'Developer 𝚂𝚘𝚞𝚛𝚌𝚎 .',url="t.me/MMSSDS"}},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/MMSSDS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
-
-
 
 
 if text == 'رابط الحذف' or text == 'رابط حذف' then
@@ -5560,23 +5546,6 @@ send(msg.chat_id_, msg.id_,one_nu)
 end,nil)
 end 
 
-
-
-if text == 'فويس' then
-data,res = https.request('https://vvvzvv.ml/amirVois/Teland.php')
-if res == 200 then
-audios = json:decode(data)
-if audios.Info == true then
-local Text ='*• تم اختيار المقطع الصوتي لك*'
-keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = '- VeCto TeAm .',url="t.me/Team_VeCto"}},
-}
-local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice='..URL.escape(audios.info)..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-end
-end
-end
 
 
 
@@ -8773,6 +8742,36 @@ end
 
 
 
+if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then  
+
+Text = "\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n• [𝚅𝚎𝙲𝚝𝚘 𝖲𝗈𝗎𝗋𝖼𝖾 .](http://t.me/TeAm_VeCto) \n• [𝚅𝚎𝙲𝚝𝚘 Developer .](http://t.me/mmssds) \n ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉"
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '• 𝚅𝚎𝙲𝚝𝚘 𝖲𝗈𝗎𝗋𝖼𝖾 .',url="t.me/TeAm_VeCto"}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/TeAm_VeCto&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
+
+
+
+
+
+if text == 'فويس' then
+data,res = https.request('https://vvvzvv.ml/amirVois/Teland.php')
+if res == 200 then
+audios = json:decode(data)
+if audios.Info == true then
+local Text ='*• تم اختيار المقطع الصوتي لك*'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '- VeCto TeAM .',url="t.me/TeAm_VeCto"}},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendVoice?chat_id=' .. msg.chat_id_ .. '&voice='..URL.escape(audios.info)..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+end
+end
+end
 
 
 
@@ -9015,6 +9014,7 @@ Text = [[
 send(msg.chat_id_, msg.id_,Text)
 return false
 end
+
 
 
 
