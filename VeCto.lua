@@ -532,7 +532,8 @@ send(msg.chat_id_, msg.id_,NameUser.."\n"..text)
 return false
 end
 if status == "reply" then
-send(msg.chat_id_, msg.id_,NameUserr.."\n"..text)
+inlin = {{{text = '- اضغط هنا للمسح.',callback_data=msg.sender_user_id_..":cancelRd:del"}}, }
+send_inlin_key(msg.chat_id_,NameUserr.."\n"..text,inlin,msg.id_)
 return false
 end
 if status == "reply_Add" then
@@ -9793,6 +9794,21 @@ end --- Chat_Type = 'UserBot'
 end
 end
 function tdcli_update_callback(data)
+if DAata and DAata:match("^(%d+):cancelRd(.*)$") then
+local notId  = DAata:match("(%d+)")  
+if tonumber(data.sender_user_id_) ~= tonumber(notId) then  
+local notText = '• عذرا الاوامر هذه لا تخصك'
+https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
+return false
+end
+if database:get(bot_id.."VeCto:Set:Manager:rd"..data.sender_user_id_..":"..data.chat_id_) then
+database:del(bot_id.."VeCto:Set:Manager:rd"..data.sender_user_id_..":"..data.chat_id_)
+https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
+https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape("❈︙تم الغاء الامر بنجاح").."&show_alert=true")
+else
+https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
+end
+end
 if data.ID == "UpdateNewCallbackQuery" then
 local Chat_id = data.chat_id_
 local From_id = data.id_
