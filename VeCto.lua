@@ -2937,30 +2937,30 @@ Reply_Status(msg,userid,"reply"," • تم تنزيله من المطورين")
 return false 
 end
 
-if text == ("رفع منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBot(msg) then  
+if text == ("رفع منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and creatorA(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 function Function_VeCto(extra, result, success)
 database:sadd(bot_id.."VeCto:Basic:Constructor"..msg.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم ترقيته منشئ اساسي")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم ترقيته منشئ اساسي")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
 end
-if text and text:match("^رفع منشئ اساسي @(.*)$") and DevBot(msg) then  
+if text and text:match("^رفع منشئ اساسي @(.*)$") and creatorA(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -2968,57 +2968,57 @@ local username = text:match("^رفع منشئ اساسي @(.*)$")
 function Function_VeCto(extra, result, success)
 if result.id_ then
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-send(msg.chat_id_,msg.id_," • عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
+send(msg.chat_id_,msg.id_,"• عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
 database:sadd(bot_id.."VeCto:Basic:Constructor"..msg.chat_id_, result.id_)
 Reply_Status(msg,result.id_,"reply","??︙تم ترقيته منشئ اساسي")  
 else
-send(msg.chat_id_, msg.id_," • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_,"• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
 return false
 end
-if text and text:match("^رفع منشئ اساسي (%d+)$") and DevBot(msg) then  
+if text and text:match("^رفع منشئ اساسي (%d+)$") and creatorA(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^رفع منشئ اساسي (%d+)$") 
 database:sadd(bot_id.."VeCto:Basic:Constructor"..msg.chat_id_, userid)
-Reply_Status(msg,userid,"reply"," • تم ترقيته منشئ اساسي")  
+Reply_Status(msg,userid,"reply","• تم ترقيته منشئ اساسي")  
 return false
 end
-if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and DevBot(msg) then  
+if text == ("تنزيل منشئ اساسي") and tonumber(msg.reply_to_message_id_) ~= 0 and creatorA(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 function Function_VeCto(extra, result, success)
 database:srem(bot_id.."VeCto:Basic:Constructor"..msg.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم تنزيله من المنشئين")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم تنزيله من المنشئين")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي @(.*)$") and DevBot(msg) then  
+if text and text:match("^تنزيل منشئ اساسي @(.*)$") and creatorA(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -3027,43 +3027,42 @@ function Function_VeCto(extra, result, success)
 if result.id_ then
 database:srem(bot_id.."VeCto:Basic:Constructor"..msg.chat_id_, result.id_)
 
-Reply_Status(msg,result.id_,"reply"," • تم تنزيله من المنشئين")  
+Reply_Status(msg,result.id_,"reply","• تم تنزيله من المنشئين")  
 else
-send(msg.chat_id_, msg.id_," • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_,"• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
 return false
 end
-if text and text:match("^تنزيل منشئ اساسي (%d+)$") and DevBot(msg) then  
+if text and text:match("^تنزيل منشئ اساسي (%d+)$") and creatorA(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^تنزيل منشئ اساسي (%d+)$") 
 database:srem(bot_id.."VeCto:Basic:Constructor"..msg.chat_id_, userid)
-Reply_Status(msg,userid,"reply"," • تم تنزيله من المنشئين")  
+Reply_Status(msg,userid,"reply","• تم تنزيله من المنشئين")  
 return false
 end
-
 if text == "رفع منشئ" and tonumber(msg.reply_to_message_id_) ~= 0 and BasicConstructor(msg) then  
 if AddChannel(msg.sender_user_id_) == false then
 local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 function Function_VeCto(extra, result, success)
 database:sadd(bot_id.."VeCto:Constructor"..msg.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم ترقيته منشئ في المجموعه")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم ترقيته منشئ في المجموعه")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 end
@@ -3073,7 +3072,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -3081,13 +3080,13 @@ local username = text:match("^رفع منشئ @(.*)$")
 function Function_VeCto(extra, result, success)
 if result.id_ then
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-send(msg.chat_id_,msg.id_," • عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
+send(msg.chat_id_,msg.id_,"• عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
 database:sadd(bot_id.."VeCto:Constructor"..msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply"," • تم ترقيته منشئ في المجموعه")  
+Reply_Status(msg,result.id_,"reply","• تم ترقيته منشئ في المجموعه")  
 else
-send(msg.chat_id_, msg.id_," • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_,"• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
@@ -3099,18 +3098,18 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^رفع منشئ (%d+)$")
 database:sadd(bot_id.."VeCto:Constructor"..msg.chat_id_, userid)
-Reply_Status(msg,userid,"reply"," • تم ترقيته منشئ في المجموعه")  
+Reply_Status(msg,userid,"reply","• تم ترقيته منشئ في المجموعه")  
 end
 if text and text:match("^تنزيل منشئ$") and tonumber(msg.reply_to_message_id_) ~= 0 and BasicConstructor(msg) then
 function Function_VeCto(extra, result, success)
 database:srem(bot_id.."VeCto:Constructor"..msg.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم تنزيله من المنشئين")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم تنزيله من المنشئين")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 end
@@ -3121,7 +3120,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -3129,9 +3128,9 @@ local username = text:match("^تنزيل منشئ @(.*)$")
 function Function_VeCto(extra, result, success)
 if result.id_ then
 database:srem(bot_id.."VeCto:Constructor"..msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply"," • تم تنزيله من المنشئين")  
+Reply_Status(msg,result.id_,"reply","• تم تنزيله من المنشئين")  
 else
-send(msg.chat_id_, msg.id_," • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_,"• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
@@ -3143,13 +3142,13 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^تنزيل منشئ (%d+)$")
 database:srem(bot_id.."VeCto:Constructor"..msg.chat_id_, userid)
-Reply_Status(msg,userid,"reply"," • تم تنزيله من المنشئين")  
+Reply_Status(msg,userid,"reply","• تم تنزيله من المنشئين")  
 end
 
 if text == ("رفع مدير") and tonumber(msg.reply_to_message_id_) ~= 0 and Constructor(msg) then  
@@ -3158,13 +3157,13 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 function Function_VeCto(extra, result, success)
 database:sadd(bot_id.."VeCto:Manager"..msg.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم ترقيته مدير المجموعه")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم ترقيته مدير المجموعه")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
@@ -3175,7 +3174,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -3183,13 +3182,13 @@ local username = text:match("^رفع مدير @(.*)$")
 function Function_VeCto(extra, result, success)
 if result.id_ then
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-send(msg.chat_id_,msg.id_," • عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
+send(msg.chat_id_,msg.id_,"• عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
 database:sadd(bot_id.."VeCto:Manager"..msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply"," • تم ترقيته مدير المجموعه")  
+Reply_Status(msg,result.id_,"reply","• تم ترقيته مدير المجموعه")  
 else
-send(msg.chat_id_, msg.id_," • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_,"• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
@@ -3202,13 +3201,13 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^رفع مدير (%d+)$") 
 database:sadd(bot_id.."VeCto:Manager"..msg.chat_id_, userid)
-Reply_Status(msg,userid,"reply"," • تم ترقيته مدير المجموعه")  
+Reply_Status(msg,userid,"reply","• تم ترقيته مدير المجموعه")  
 return false
 end  
 if text == ("تنزيل مدير") and tonumber(msg.reply_to_message_id_) ~= 0 and Constructor(msg) then  
@@ -3217,13 +3216,13 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 function Function_VeCto(extra, result, success)
 database:srem(bot_id.."VeCto:Manager"..msg.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم تنزيله من المدراء")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم تنزيله من المدراء")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
@@ -3234,7 +3233,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -3242,9 +3241,9 @@ local username = text:match("^تنزيل مدير @(.*)$")
 function Function_VeCto(extra, result, success)
 if result.id_ then
 database:srem(bot_id.."VeCto:Manager"..msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply"," • تم تنزيله من المدراء")  
+Reply_Status(msg,result.id_,"reply","• تم تنزيله من المدراء")  
 else
-send(msg.chat_id_, msg.id_," • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_,"• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
@@ -3256,13 +3255,13 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^تنزيل مدير (%d+)$") 
 database:srem(bot_id.."VeCto:Manager"..msg.chat_id_, userid)
-Reply_Status(msg,userid,"reply"," • تم تنزيله من المدراء")  
+Reply_Status(msg,userid,"reply","• تم تنزيله من المدراء")  
 return false
 end
 
@@ -3272,17 +3271,17 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 if not Constructor(msg) and database:get(bot_id.."Add:Group:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,' • لا تستطيع رفع احد وذالك لان تم تعطيل الرفع من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'• لا تستطيع رفع احد وذالك لان تم تعطيل الرفع من قبل المنشئين')
 return false
 end
 function Function_VeCto(extra, result, success)
 database:sadd(bot_id.."VeCto:Mod:User"..msg.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم ترقيته ادمن للمجموعه")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم ترقيته ادمن للمجموعه")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
@@ -3293,25 +3292,25 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local username = text:match("^رفع ادمن @(.*)$")
 if not Constructor(msg) and database:get(bot_id.."Add:Group:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,' • لا تستطيع رفع احد وذالك لان تم تعطيل الرفع من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'• لا تستطيع رفع احد وذالك لان تم تعطيل الرفع من قبل المنشئين')
 return false
 end
 function Function_VeCto(extra, result, success)
 if result.id_ then
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-send(msg.chat_id_,msg.id_," • عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
+send(msg.chat_id_,msg.id_,"• عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
 database:sadd(bot_id.."VeCto:Mod:User"..msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply"," • تم ترقيته ادمن للمجموعه")  
+Reply_Status(msg,result.id_,"reply","• تم ترقيته ادمن للمجموعه")  
 else
-send(msg.chat_id_, msg.id_," • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_,"• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
@@ -3323,17 +3322,17 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^رفع ادمن (%d+)$")
 if not Constructor(msg) and database:get(bot_id.."Add:Group:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,' • لا تستطيع رفع احد وذالك لان تم تعطيل الرفع من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'• لا تستطيع رفع احد وذالك لان تم تعطيل الرفع من قبل المنشئين')
 return false
 end
 database:sadd(bot_id.."VeCto:Mod:User"..msg.chat_id_, userid)
-Reply_Status(msg,userid,"reply"," • تم ترقيته ادمن للمجموعه")  
+Reply_Status(msg,userid,"reply","• تم ترقيته ادمن للمجموعه")  
 return false
 end
 if text == ("تنزيل ادمن") and tonumber(msg.reply_to_message_id_) ~= 0 and Owner(msg) then  
@@ -3342,13 +3341,13 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 function Function_VeCto(extra, result, success)
 database:srem(bot_id.."VeCto:Mod:User"..msg.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم تنزيله من ادمنيه المجموعه")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم تنزيله من ادمنيه المجموعه")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
@@ -3359,7 +3358,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -3367,9 +3366,9 @@ local username = text:match("^تنزيل ادمن @(.*)$")
 function Function_VeCto(extra, result, success)
 if result.id_ then
 database:srem(bot_id.."VeCto:Mod:User"..msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply"," • تم تنزيله من ادمنيه المجموعه")  
+Reply_Status(msg,result.id_,"reply","• تم تنزيله من ادمنيه المجموعه")  
 else
-send(msg.chat_id_, msg.id_," • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_,"• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
@@ -3381,13 +3380,13 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^تنزيل ادمن (%d+)$")
 database:srem(bot_id.."VeCto:Mod:User"..msg.chat_id_, userid)
-Reply_Status(msg,userid,"reply"," • تم تنزيله من ادمنيه المجموعه")  
+Reply_Status(msg,userid,"reply","• تم تنزيله من ادمنيه المجموعه")  
 return false
 end
 
@@ -3397,17 +3396,17 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 if not Constructor(msg) and database:get(bot_id.."Add:Group:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,' • لا تستطيع رفع احد وذالك لان تم تعطيل الرفع من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'• لا تستطيع رفع احد وذالك لان تم تعطيل الرفع من قبل المنشئين')
 return false
 end
 function Function_VeCto(extra, result, success)
 database:sadd(bot_id.."VeCto:Special:User"..msg.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم ترقيته مميز للمجموعه")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم ترقيته مميز للمجموعه")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
@@ -3418,25 +3417,25 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local username = text:match("^رفع مميز @(.*)$") 
 if not Constructor(msg) and database:get(bot_id.."Add:Group:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,' • لا تستطيع رفع احد وذالك لان تم تعطيل الرفع من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'• لا تستطيع رفع احد وذالك لان تم تعطيل الرفع من قبل المنشئين')
 return false
 end
 function Function_VeCto(extra, result, success)
 if result.id_ then
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-send(msg.chat_id_,msg.id_," • عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
+send(msg.chat_id_,msg.id_,"• عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
 database:sadd(bot_id.."VeCto:Special:User"..msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply"," • تم ترقيته مميز للمجموعه")  
+Reply_Status(msg,result.id_,"reply","• تم ترقيته مميز للمجموعه")  
 else
-send(msg.chat_id_, msg.id_," • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_,"• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
@@ -3449,17 +3448,17 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^رفع مميز (%d+)$")
 if not Constructor(msg) and database:get(bot_id.."Add:Group:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,' • لا تستطيع رفع احد وذالك لان تم تعطيل الرفع من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'• لا تستطيع رفع احد وذالك لان تم تعطيل الرفع من قبل المنشئين')
 return false
 end
 database:sadd(bot_id.."VeCto:Special:User"..msg.chat_id_, userid)
-Reply_Status(msg,userid,"reply"," • تم ترقيته مميز للمجموعه")  
+Reply_Status(msg,userid,"reply","• تم ترقيته مميز للمجموعه")  
 return false
 end
 
@@ -3469,13 +3468,13 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 function Function_VeCto(extra, result, success)
 database:srem(bot_id.."VeCto:Special:User"..msg.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم تنزيله من المميزين")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم تنزيله من المميزين")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
@@ -3486,7 +3485,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -3494,9 +3493,9 @@ local username = text:match("^تنزيل مميز @(.*)$")
 function Function_VeCto(extra, result, success)
 if result.id_ then
 database:srem(bot_id.."VeCto:Special:User"..msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply"," • تم تنزيله من المميزين")  
+Reply_Status(msg,result.id_,"reply","• تم تنزيله من المميزين")  
 else
-send(msg.chat_id_, msg.id_," • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_,"• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
@@ -3508,13 +3507,13 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^تنزيل مميز (%d+)$") 
 database:srem(bot_id.."VeCto:Special:User"..msg.chat_id_, userid)
-Reply_Status(msg,userid,"reply"," • تم تنزيله من المميزين")  
+Reply_Status(msg,userid,"reply","• تم تنزيله من المميزين")  
 return false
 end  
 if text and text:match("رفع (.*)") and tonumber(msg.reply_to_message_id_) > 0 and Addictive(msg) then  
@@ -3523,7 +3522,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -3533,19 +3532,19 @@ function by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 local VeCtort = database:get(bot_id.."VeCto:Comd:New:rt:bot:"..RTPA..msg.chat_id_)
 if VeCtort == "مميز" and Addictive(msg) then
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..data.first_name_.."](t.me/"..(data.username_ or "TEAM_VeCto")..")".."\n • تم رفعه "..RTPA.." هنا\n")
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..data.first_name_.."](t.me/"..(data.username_ or "FJJJJO")..")".."\n• تم رفعه "..RTPA.." هنا\n")
 database:set(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,RTPA) 
 database:sadd(bot_id.."VeCto:Special:User"..msg.chat_id_,result.sender_user_id_)  
 elseif VeCtort == "ادمن" and Owner(msg) then 
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..data.first_name_.."](t.me/"..(data.username_ or "TEAM_VeCto")..")".."\n • تم رفعه "..RTPA.." هنا\n")
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..data.first_name_.."](t.me/"..(data.username_ or "FJJJJO")..")".."\n• تم رفعه "..RTPA.." هنا\n")
 database:set(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,RTPA)
 database:sadd(bot_id.."VeCto:Mod:User"..msg.chat_id_,result.sender_user_id_)  
 elseif VeCtort == "مدير" and Constructor(msg) then
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..data.first_name_.."](t.me/"..(data.username_ or "TEAM_VeCto")..")".."\n • تم رفعه "..RTPA.." هنا\n")
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..data.first_name_.."](t.me/"..(data.username_ or "FJJJJO")..")".."\n• تم رفعه "..RTPA.." هنا\n")
 database:set(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,RTPA)  
 database:sadd(bot_id.."VeCto:Manager"..msg.chat_id_,result.sender_user_id_)  
 elseif VeCtort == "عضو" and Addictive(msg) then
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..data.first_name_.."](t.me/"..(data.username_ or "TEAM_VeCto")..")".."\n • تم رفعه "..RTPA.." هنا\n")
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..data.first_name_.."](t.me/"..(data.username_ or "FJJJJO")..")".."\n• تم رفعه "..RTPA.." هنا\n")
 end
 end,nil)   
 end   
@@ -3558,7 +3557,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -3568,19 +3567,19 @@ function by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
 local VeCtort = database:get(bot_id.."VeCto:Comd:New:rt:bot:"..RTPA..msg.chat_id_)
 if VeCtort == "مميز" and Addictive(msg) then
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..data.first_name_.."](t.me/"..(data.username_ or "TEAM_VeCto")..")".."\n • تم تنزيله من "..RTPA.." هنا\n")  
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..data.first_name_.."](t.me/"..(data.username_ or "FJJJJO")..")".."\n• تم تنزيله من "..RTPA.." هنا\n")  
 database:srem(bot_id.."VeCto:Special:User"..msg.chat_id_,result.sender_user_id_)  
 database:del(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif VeCtort == "ادمن" and Owner(msg) then 
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..data.first_name_.."](t.me/"..(data.username_ or "TEAM_VeCto")..")".."\n • تم تنزيله من "..RTPA.." هنا\n")  
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..data.first_name_.."](t.me/"..(data.username_ or "FJJJJO")..")".."\n• تم تنزيله من "..RTPA.." هنا\n")  
 database:srem(bot_id.."VeCto:Mod:User"..msg.chat_id_,result.sender_user_id_) 
 database:del(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif VeCtort == "مدير" and Constructor(msg) then
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..data.first_name_.."](t.me/"..(data.username_ or "TEAM_VeCto")..")".."\n • تم تنزيله من "..RTPA.." هنا\n")  
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..data.first_name_.."](t.me/"..(data.username_ or "FJJJJO")..")".."\n• تم تنزيله من "..RTPA.." هنا\n")  
 database:srem(bot_id.."VeCto:Manager"..msg.chat_id_,result.sender_user_id_)  
 database:del(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
 elseif VeCtort == "عضو" and Addictive(msg) then
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..data.first_name_.."](t.me/"..(data.username_ or "TEAM_VeCto")..")".."\n • تم تنزيله من "..RTPA.." هنا\n")  
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..data.first_name_.."](t.me/"..(data.username_ or "FJJJJO")..")".."\n• تم تنزيله من "..RTPA.." هنا\n")  
 end
 end,nil)   
 end   
@@ -3593,7 +3592,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -3603,22 +3602,22 @@ function py_username(extra, result, success)
 if result.id_ then
 local VeCtort = database:get(bot_id.."VeCto:Comd:New:rt:bot:"..text1[2]..msg.chat_id_)
 if VeCtort == "مميز" and Addictive(msg) then
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..result.title_.."](t.me/"..(text1[3] or "TEAM_VeCto")..")".."\n • تم رفعه "..text1[2].." هنا")   
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..result.title_.."](t.me/"..(text1[3] or "FJJJJO")..")".."\n• تم رفعه "..text1[2].." هنا")   
 database:sadd(bot_id.."VeCto:Special:User"..msg.chat_id_,result.id_)  
 database:set(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif VeCtort == "ادمن" and Owner(msg) then 
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..result.title_.."](t.me/"..(text1[3] or "TEAM_VeCto")..")".."\n • تم رفعه "..text1[2].." هنا")   
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..result.title_.."](t.me/"..(text1[3] or "FJJJJO")..")".."\n• تم رفعه "..text1[2].." هنا")   
 database:sadd(bot_id.."VeCto:Mod:User"..msg.chat_id_,result.id_)  
 database:set(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif VeCtort == "مدير" and Constructor(msg) then
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..result.title_.."](t.me/"..(text1[3] or "TEAM_VeCto")..")".."\n • تم رفعه "..text1[2].." هنا")   
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..result.title_.."](t.me/"..(text1[3] or "FJJJJO")..")".."\n• تم رفعه "..text1[2].." هنا")   
 database:sadd(bot_id.."VeCto:Manager"..msg.chat_id_,result.id_)  
 database:set(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
 elseif VeCtort == "عضو" and Addictive(msg) then
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..result.title_.."](t.me/"..(text1[3] or "TEAM_VeCto")..")".."\n • تم رفعه "..text1[2].." هنا")   
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..result.title_.."](t.me/"..(text1[3] or "FJJJJO")..")".."\n• تم رفعه "..text1[2].." هنا")   
 end
 else
-info = " • المعرف غلط"
+info = "• المعرف غلط"
 send(msg.chat_id_, msg.id_,info)
 end
 end
@@ -3631,7 +3630,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -3641,22 +3640,22 @@ function py_username(extra, result, success)
 if result.id_ then
 local VeCtort = database:get(bot_id.."VeCto:Comd:New:rt:bot:"..text1[2]..msg.chat_id_)
 if VeCtort == "مميز" and Addictive(msg) then
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..result.title_.."](t.me/"..(text1[3] or "TEAM_VeCto")..")".."\n • تم تنريله من "..text1[2].." هنا")   
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..result.title_.."](t.me/"..(text1[3] or "FJJJJO")..")".."\n• تم تنريله من "..text1[2].." هنا")   
 database:srem(bot_id.."VeCto:Special:User"..msg.chat_id_,result.id_)  
 database:del(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif VeCtort == "ادمن" and Owner(msg) then 
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..result.title_.."](t.me/"..(text1[3] or "TEAM_VeCto")..")".."\n • تم تنريله من "..text1[2].." هنا")   
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..result.title_.."](t.me/"..(text1[3] or "FJJJJO")..")".."\n• تم تنريله من "..text1[2].." هنا")   
 database:srem(bot_id.."VeCto:Mod:User"..msg.chat_id_,result.id_)  
 database:del(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif VeCtort == "مدير" and Constructor(msg) then
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..result.title_.."](t.me/"..(text1[3] or "TEAM_VeCto")..")".."\n • تم تنريله من "..text1[2].." هنا")   
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..result.title_.."](t.me/"..(text1[3] or "FJJJJO")..")".."\n• تم تنريله من "..text1[2].." هنا")   
 database:srem(bot_id.."VeCto:Manager"..msg.chat_id_,result.id_)  
 database:del(bot_id.."VeCto:Comd:New:rt:User:"..msg.chat_id_..result.id_)
 elseif VeCtort == "عضو" and Addictive(msg) then
-send(msg.chat_id_, msg.id_,"\n\n • العضو ↺["..result.title_.."](t.me/"..(text1[3] or "TEAM_VeCto")..")".."\n • تم تنريله من "..text1[2].." هنا")   
+send(msg.chat_id_, msg.id_,"[- VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .](https://t.me/FJJJJO)\n — — — — — — — — —\n• العضو -› ["..result.title_.."](t.me/"..(text1[3] or "FJJJJO")..")".."\n• تم تنريله من "..text1[2].." هنا")   
 end
 else
-info = " • المعرف غلط"
+info = "• المعرف غلط"
 send(msg.chat_id_, msg.id_,info)
 end
 end
@@ -3670,35 +3669,38 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 if not Constructor(msg) and database:get(bot_id.."Ban:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,' • لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'• لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
 return false
 end
 function Function_VeCto(extra, result, success)
 if result.sender_user_id_ == tonumber(1313703081) then
-send(msg.chat_id_, msg.id_, " • لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+send(msg.chat_id_, msg.id_, "• لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
-
+if result.sender_user_id_ == tonumber(1313703081) then
+send(msg.chat_id_, msg.id_, "• لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+return false 
+end
 if Rank_Checking(result.sender_user_id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n • عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.sender_user_id_,msg.chat_id_).." )")
+send(msg.chat_id_, msg.id_, "\n• عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.sender_user_id_,msg.chat_id_).." )")
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.sender_user_id_, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_, msg.id_," • ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_, msg.id_,"• ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
 return false  
 end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_," • البوت ليس ادمن يرجى ترقيتي !") 
+send(msg.chat_id_, msg.id_,"• البوت ليس ادمن يرجى ترقيتي !") 
 return false  
 end
 database:sadd(bot_id.."VeCto:Ban:User"..msg.chat_id_, result.sender_user_id_)
 Kick_Group(result.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم حظره من المجموعه")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم حظره من المجموعه")  
 end,nil)   
 end
 end
@@ -3734,52 +3736,52 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local username = text:match("^حظر @(.*)$")
 if not Constructor(msg) and database:get(bot_id.."Ban:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,' • لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'• لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
 return false
 end
 function Function_VeCto(extra, result, success)
 if result.id_ then
-if result.id_ == tonumber(Id_Sudo) then
-send(msg.chat_id_, msg.id_, " • لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+if result.id_ == tonumber(1313703081) then
+send(msg.chat_id_, msg.id_, "• لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
 if result.id_ == tonumber(Id_Sudo) then
-send(msg.chat_id_, msg.id_, " • لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت \n")
+send(msg.chat_id_, msg.id_, "• لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت \n")
 return false 
 end
-if result.id_ == tonumber(Id_Sudo) then
-send(msg.chat_id_, msg.id_, " • لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+if result.id_ == tonumber(1313703081) then
+send(msg.chat_id_, msg.id_, "• لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
 if Rank_Checking(result.id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n • عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.id_,msg.chat_id_).." )")
+send(msg.chat_id_, msg.id_, "\n• عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.id_,msg.chat_id_).." )")
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-send(msg.chat_id_,msg.id_," • عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
+send(msg.chat_id_,msg.id_,"• عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_, msg.id_," • ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_, msg.id_,"• ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
 return false  
 end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_," • البوت ليس ادمن يرجى ترقيتي !") 
+send(msg.chat_id_, msg.id_,"• البوت ليس ادمن يرجى ترقيتي !") 
 return false  
 end
 database:sadd(bot_id.."VeCto:Ban:User"..msg.chat_id_, result.id_)
 Kick_Group(msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply"," • تم حظره من المجموعه")  
+Reply_Status(msg,result.id_,"reply","• تم حظره من المجموعه")  
 end,nil)   
 end
 else
-send(msg.chat_id_, msg.id_, " • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_, "• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
@@ -3792,39 +3794,42 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^حظر (%d+)$") 
 if not Constructor(msg) and database:get(bot_id.."Ban:Cheking"..msg.chat_id_) then 
-send(msg.chat_id_, msg.id_,' • لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
+send(msg.chat_id_, msg.id_,'• لقد تم تعطيل الحظر و الطرد من قبل المنشئين')
 return false
 end
 if userid == tonumber(Id_Sudo) then
-send(msg.chat_id_, msg.id_, " • لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت \n")
+send(msg.chat_id_, msg.id_, "• لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت \n")
 return false 
 end
 if userid == tonumber(1313703081) then
-send(msg.chat_id_, msg.id_, " • لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+send(msg.chat_id_, msg.id_, "• لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
-
+if userid == tonumber(1313703081) then
+send(msg.chat_id_, msg.id_, "• لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+return false 
+end
 if Rank_Checking(userid, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n • عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(userid,msg.chat_id_).." )")
+send(msg.chat_id_, msg.id_, "\n• عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(userid,msg.chat_id_).." )")
 else
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = userid, status_ = { ID = "ChatMemberStatusKicked" },},function(arg,data) 
 if (data and data.code_ and data.code_ == 400 and data.message_ == "CHAT_ADMIN_REQUIRED") then 
-send(msg.chat_id_, msg.id_," • ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
+send(msg.chat_id_, msg.id_,"• ليس لدي صلاحية حظر المستخدمين يرجى تفعيلها !") 
 return false  
 end
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_," • البوت ليس ادمن يرجى ترقيتي !") 
+send(msg.chat_id_, msg.id_,"• البوت ليس ادمن يرجى ترقيتي !") 
 return false  
 end
 database:sadd(bot_id.."VeCto:Ban:User"..msg.chat_id_, userid)
 Kick_Group(msg.chat_id_, userid)  
-Reply_Status(msg,userid,"reply"," • تم حظره من المجموعه")  
+Reply_Status(msg,userid,"reply","• تم حظره من المجموعه")  
 end,nil)   
 end
 return false
@@ -3835,18 +3840,18 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 function Function_VeCto(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(bot_id) then
-send(msg.chat_id_, msg.id_, " • انا لست محظورا \n") 
+send(msg.chat_id_, msg.id_, "⌔️︙انا لست محظورا \n") 
 return false 
 end
 database:srem(bot_id.."VeCto:Ban:User"..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.sender_user_id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم الغاء حظره من هنا")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم الغاء حظره من هنا")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
@@ -3858,7 +3863,7 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
@@ -3866,14 +3871,14 @@ local username = text:match("^الغاء حظر @(.*)$")
 function Function_VeCto(extra, result, success)
 if result.id_ then
 if tonumber(result.id_) == tonumber(bot_id) then
-send(msg.chat_id_, msg.id_, " • انا لست محظورا \n") 
+send(msg.chat_id_, msg.id_, "⌔️︙انا لست محظورا \n") 
 return false 
 end
 database:srem(bot_id.."VeCto:Ban:User"..msg.chat_id_, result.id_)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
-Reply_Status(msg,result.id_,"reply"," • تم الغاء حظره من هنا")  
+Reply_Status(msg,result.id_,"reply","• تم الغاء حظره من هنا")  
 else
-send(msg.chat_id_, msg.id_, " • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_, "• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
@@ -3886,18 +3891,18 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^الغاء حظر (%d+)$") 
 if tonumber(userid) == tonumber(bot_id) then
-send(msg.chat_id_, msg.id_, " • انا لست محظورا \n") 
+send(msg.chat_id_, msg.id_, "⌔️︙انا لست محظورا \n") 
 return false 
 end
 database:srem(bot_id.."VeCto:Ban:User"..msg.chat_id_, userid)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = userid, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
-Reply_Status(msg,userid,"reply"," • تم الغاء حظره من هنا")  
+Reply_Status(msg,userid,"reply","• تم الغاء حظره من هنا")  
 return false
 end
 
@@ -3907,30 +3912,33 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 function Function_VeCto(extra, result, success)
 if result.sender_user_id_ == tonumber(1313703081) then
-send(msg.chat_id_, msg.id_, " • لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس  \n")
+send(msg.chat_id_, msg.id_, "• لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس  \n")
 return false 
 end
-
+if result.sender_user_id_ == tonumber(1313703081) then
+send(msg.chat_id_, msg.id_, "• لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس  \n")
+return false 
+end
 if result.sender_user_id_ == tonumber(Id_Sudo) then
-send(msg.chat_id_, msg.id_, " • لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت  \n")
+send(msg.chat_id_, msg.id_, "• لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور البوت  \n")
 return false 
 end
 if Rank_Checking(result.sender_user_id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n • عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.sender_user_id_,msg.chat_id_).." )")
+send(msg.chat_id_, msg.id_, "\n• عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.sender_user_id_,msg.chat_id_).." )")
 return false 
 end     
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_," • البوت ليس ادمن يرجى ترقيتي !") 
+send(msg.chat_id_, msg.id_,"• البوت ليس ادمن يرجى ترقيتي !") 
 return false  
 end
 database:sadd(bot_id.."VeCto:Muted:User"..msg.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم كتمه من هنا")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم كتمه من هنا")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
@@ -3941,33 +3949,33 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local username = text:match("^كتم @(.*)$")
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_," • البوت ليس ادمن يرجى ترقيتي !") 
+send(msg.chat_id_, msg.id_,"• البوت ليس ادمن يرجى ترقيتي !") 
 return false  
 end
 function Function_VeCto(extra, result, success)
 if result.id_ then
-if result.id_ == tonumber(Id_Sudo) then
-send(msg.chat_id_, msg.id_, " • لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+if result.id_ == tonumber(1313703081) then
+send(msg.chat_id_, msg.id_, "• لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
 if Rank_Checking(result.id_, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n • عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.id_,msg.chat_id_).." )")
+send(msg.chat_id_, msg.id_, "\n• عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(result.id_,msg.chat_id_).." )")
 return false 
 end     
 if (result and result.type_ and result.type_.ID == "ChannelChatInfo") then
-send(msg.chat_id_,msg.id_," • عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
+send(msg.chat_id_,msg.id_,"• عذرا عزيزي المستخدم هاذا معرف قناة يرجى استخدام الامر بصوره صحيحه !")   
 return false 
 end      
 database:sadd(bot_id.."VeCto:Muted:User"..msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply"," • تم كتمه من هنا")  
+Reply_Status(msg,result.id_,"reply","• تم كتمه من هنا")  
 else
-send(msg.chat_id_, msg.id_, " • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_, "• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
@@ -3979,24 +3987,24 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^كتم (%d+)$")
 if userid == tonumber(1313703081) then
-send(msg.chat_id_, msg.id_, " • لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
+send(msg.chat_id_, msg.id_, "• لا يمكن { حظر،كتم،طرد،تقيد،الخ ..} مطور السورس \n")
 return false 
 end
 if Rank_Checking(userid, msg.chat_id_) == true then
-send(msg.chat_id_, msg.id_, "\n • عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(userid,msg.chat_id_).." )")
+send(msg.chat_id_, msg.id_, "\n• عذرا لا تستطيع طرد او حظر او كتم او تقييد ( "..Get_Rank(userid,msg.chat_id_).." )")
 else
 if msg.can_be_deleted_ == false then 
-send(msg.chat_id_, msg.id_," • البوت ليس ادمن يرجى ترقيتي !") 
+send(msg.chat_id_, msg.id_,"• البوت ليس ادمن يرجى ترقيتي !") 
 return false  
 end
 database:sadd(bot_id.."VeCto:Muted:User"..msg.chat_id_, userid)
-Reply_Status(msg,userid,"reply"," • تم كتمه من هنا")  
+Reply_Status(msg,userid,"reply","• تم كتمه من هنا")  
 end
 return false
 end
@@ -4006,13 +4014,13 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 function Function_VeCto(extra, result, success)
 database:srem(bot_id.."VeCto:Muted:User"..msg.chat_id_, result.sender_user_id_)
-Reply_Status(msg,result.sender_user_id_,"reply"," • تم الغاء كتمه من هنا")  
+Reply_Status(msg,result.sender_user_id_,"reply","• تم الغاء كتمه من هنا")  
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, Function_VeCto, nil)
 return false
@@ -4022,9 +4030,9 @@ local username = text:match("^الغاء كتم @(.*)$")
 function Function_VeCto(extra, result, success)
 if result.id_ then
 database:srem(bot_id.."VeCto:Muted:User"..msg.chat_id_, result.id_)
-Reply_Status(msg,result.id_,"reply"," • تم الغاء كتمه من هنا")  
+Reply_Status(msg,result.id_,"reply","• تم الغاء كتمه من هنا")  
 else
-send(msg.chat_id_, msg.id_," • لا يوجد حساب بهاذا المعرف")
+send(msg.chat_id_, msg.id_,"• لا يوجد حساب بهاذا المعرف")
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = username}, Function_VeCto, nil)
@@ -4037,13 +4045,13 @@ local textchuser = database:get(bot_id..'text:ch:user')
 if textchuser then
 send(msg.chat_id_, msg.id_,'['..textchuser..']')
 else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
+send(msg.chat_id_, msg.id_,'• عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n • قنـاة البـوت ↺  ['..database:get(bot_id..'add:ch:username')..']')
 end
 return false
 end
 local userid = text:match("^الغاء كتم (%d+)$") 
 database:srem(bot_id.."VeCto:Muted:User"..msg.chat_id_, userid)
-Reply_Status(msg,userid,"reply"," • تم الغاء كتمه من هنا")  
+Reply_Status(msg,userid,"reply","• تم الغاء كتمه من هنا")  
 return false
 end
 if text == 'قفل الفارسيه' and msg.reply_to_message_id_ == 0 and Addictive(msg) then 
