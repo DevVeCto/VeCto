@@ -9779,6 +9779,7 @@ end
 end --- Chat_Type = 'UserBot' 
 end
 end
+function tdcli_update_callback(data)
 if data.ID == "UpdateNewCallbackQuery" then
 local Chat_id = data.chat_id_
 local From_id = data.id_
