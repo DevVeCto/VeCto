@@ -11,15 +11,19 @@ https   = require("ssl.https")
 sudos   = dofile("sudo.lua")
 bot_id  = token:match("(%d+)")  
 Id_Sudo = Sudo
-List_Sudos = {Id_Sudo,1313703081,114518657}
+List_Sudos = {Id_Sudo,1365861827}
 User = io.popen("whoami"):read('*a')
 IP = io.popen("dig +short myip.opendns.com @resolver1.opendns.com"):read('*a')
 name = io.popen("uname -a | awk '{ name = $2 } END { print name }'"):read('*a')
 port = io.popen("echo ${SSH_CLIENT} | awk '{ port = $3 } END { print port }'"):read('*a')
 Rtime = io.popen("date +'%Y-%m-%d %T'"):read('*a')
 print("\27[34m"..[[
->> Best Source in Telegram
->> Features fast and powerful
+>> The Bot is Running
+>> Bot source > VeCto
+>>Source channel > @TeAm_VeCto
+>>Source developer > @MmSsDs
+
+
 Installation information
 
 User :: ]]..User..[[
