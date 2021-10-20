@@ -8758,6 +8758,406 @@ send(msg.chat_id_, msg.id_, "* • تم التحديث*")
 end
 
 
+if DataText and DataText:match('/HideHelpList:(.*)') then
+local Abbs = DataText:match('/HideHelpList:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+EditMsg(Chat_Id2, Msg_Id2, "• تم اخفاء كليشة الاوامر") 
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList:(.*)') then
+local Abbs = DataText:match('/HelpList:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+local Help = DevAbs:get(VeCto..'Abs:Help')
+local Text = [[
+• اهلا بك في قائمة الاوامر ↫ ⤈ 
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• م1 ↫ اوامر الحمايه
+• م2 ↫ اوامر الادمنيه
+• م3 ↫ اوامر المدراء
+• م4 ↫ اوامر المنشئين
+• م5 ↫ اوامر المطورين
+• م6 ↫ اوامر الاعضاء
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• [Source Channel](https://t.me/TeAm_VeCto)
+]] 
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList1:(.*)') then
+local Abbs = DataText:match('/HelpList1:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+if not Admin(data) then
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
+end
+local Help = DevAbs:get(VeCto..'Abs:Help1')
+local Text = [[
+• اوامر حماية المجموعه ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• قفل • فتح ↫ الروابط
+• قفل • فتح ↫ المعرفات
+• قفل • فتح ↫ البوتات
+• قفل • فتح ↫ المتحركه
+• قفل • فتح ↫ الملصقات
+• قفل • فتح ↫ الملفات
+• قفل • فتح ↫ الصور
+• قفل • فتح ↫ الفيديو
+• قفل • فتح ↫ الاونلاين
+• قفل • فتح ↫ الدردشه
+• قفل • فتح ↫ التوجيه
+• قفل • فتح ↫ الاغاني
+• قفل • فتح ↫ الصوت
+• قفل • فتح ↫ الجهات
+• قفل • فتح ↫ الماركداون
+• قفل • فتح ↫ التكرار
+• قفل • فتح ↫ الهاشتاك
+• قفل • فتح ↫ التعديل
+• قفل • فتح ↫ التثبيت
+• قفل • فتح ↫ الاشعارات
+• قفل • فتح ↫ الكلايش
+• قفل • فتح ↫ الدخول
+• قفل • فتح ↫ الشبكات
+• قفل • فتح ↫ المواقع
+• قفل • فتح ↫ الفشار
+• قفل • فتح ↫ الكفر
+• قفل • فتح ↫ الطائفيه
+• قفل • فتح ↫ الكل
+• قفل • فتح ↫ العربيه
+• قفل • فتح ↫ الانكليزيه
+• قفل • فتح ↫ الفارسيه
+• قفل • فتح ↫ التفليش
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• اوامر حمايه اخرى ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• قفل • فتح + الامر ↫ ⤈
+• التكرار بالطرد
+• التكرار بالكتم
+• التكرار بالتقيد
+• الفارسيه بالطرد
+• البوتات بالطرد
+• البوتات بالتقيد
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• [Source Channel](https://t.me/TeAm_VeCto)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList2:(.*)') then
+local Abbs = DataText:match('/HelpList2:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+if not Admin(data) then
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
+end
+local Help = DevAbs:get(VeCto..'Abs:Help2')
+local Text = [[
+• اوامر الادمنيه ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• الاعدادت
+• تاك للكل 
+• انشاء رابط
+• ضع وصف
+• ضع رابط
+• ضع صوره
+• حذف الرابط
+• حذف المطايه
+• كشف البوتات
+• طرد البوتات
+• تنظيف + العدد
+• تنظيف التعديل
+• كللهم + الكلمه
+• اسم البوت + الامر
+• ضع • حذف ↫ ترحيب
+• ضع • حذف ↫ قوانين
+• اضف • حذف ↫ صلاحيه
+• الصلاحيات • حذف الصلاحيات
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• ضع سبام + العدد
+• ضع تكرار + العدد
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• رفع مميز • تنزيل مميز
+• المميزين • حذف المميزين
+• كشف القيود • رفع القيود
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• حذف • مسح + بالرد
+• منع • الغاء منع
+• قائمه المنع
+• حذف قائمه المنع
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• تفعيل • تعطيل ↫ الرابط
+• تفعيل • تعطيل ↫ الالعاب
+• تفعيل • تعطيل ↫ الترحيب
+• تفعيل • تعطيل ↫ التاك للكل
+• تفعيل • تعطيل ↫ كشف الاعدادات
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• طرد المحذوفين
+• طرد ↫ بالرد • بالمعرف • بالايدي
+• كتم • الغاء كتم
+• تقيد • الغاء تقيد
+• حظر • الغاء حظر
+• المكتومين • حذف المكتومين
+• المقيدين • حذف المقيدين
+• المحظورين • حذف المحظورين
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• تقييد دقيقه + عدد الدقائق
+• تقييد ساعه + عدد الساعات
+• تقييد يوم + عدد الايام
+• الغاء تقييد ↫ لالغاء التقييد بالوقت
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• [Source Channel](https://t.me/TeAm_VeCto)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList3:(.*)') then
+local Abbs = DataText:match('/HelpList3:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+if not Admin(data) then
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
+end
+local Help = DevAbs:get(VeCto..'Abs:Help3')
+local Text = [[
+• اوامر المدراء ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• فحص البوت
+• ضع اسم + الاسم
+• اضف • حذف ↫ رد
+• ردود المدير
+• حذف ردود المدير
+• اضف • حذف ↫ رد متعدد
+• حذف رد من متعدد
+• الردود المتعدده
+• حذف الردود المتعدده
+• حذف قوائم المنع
+• منع ↫ بالرد على ( ملصق • صوره • متحركه )
+• حذف قائمه منع + ↫ ⤈
+( الصور • المتحركات • الملصقات )
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• تنزيل الكل
+• رفع ادمن • تنزيل ادمن
+• الادمنيه • حذف الادمنيه
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• تثبيت
+• الغاء التثبيت
+• اعاده التثبيت
+• الغاء تثبيت الكل
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• تغير رد + اسم الرتبه + النص ↫ ⤈
+• المطور • منشئ الاساسي
+• المنشئ • المدير • الادمن
+• المميز • المنظف • العضو
+• حذف ردود الرتب
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• تغيير الايدي ↫ لتغيير الكليشه
+• تعيين الايدي ↫ لتعيين الكليشه
+• حذف الايدي ↫ لحذف الكليشه
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• تفعيل • تعطيل + الامر ↫ ⤈
+• اطردني • الايدي بالصوره • الابراج
+• معاني الاسماء • اوامر النسب • انطق
+• الايدي • تحويل الصيغ • اوامر التحشيش
+• ردود المدير • ردود المطور • التحقق
+• ضافني • حساب العمر • الزخرفه • غنيلي
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• [Source Channel](https://t.me/TeAm_VeCto)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList4:(.*)') then
+local Abbs = DataText:match('/HelpList4:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+if not Admin(data) then
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
+end
+local Help = DevAbs:get(VeCto..'Abs:Help4')
+local Text = [[
+• اوامر المنشئين ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• تنزيل الكل
+• الميديا • امسح
+• تعين عدد الحذف
+• ترتيب الاوامر
+• اضف • حذف ↫ امر
+• حذف الاوامر المضافه
+• الاوامر المضافه
+• اضف نقاط ↫ بالرد • بالايدي
+• اضف رسائل ↫ بالرد • بالايدي
+• رفع منظف • تنزيل منظف
+• المنظفين • حذف المنظفين
+• رفع مدير • تنزيل مدير
+• المدراء • حذف المدراء
+• تفعيل • تعطيل + الامر ↫ ⤈
+• نزلني • امسح
+• الحظر • الكتم
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• اوامر المنشئين الاساسيين ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• وضع لقب + اللقب
+• تفعيل • تعطيل ↫ الرفع
+• رفع منشئ • تنزيل منشئ
+• المنشئين • حذف المنشئين
+• رفع • تنزيل ↫ مشرف
+• رفع بكل الصلاحيات
+• حذف القوائم
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• اوامر المالكين ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• رفع • تنزيل ↫ منشئ اساسي
+• حذف المنشئين الاساسيين 
+• المنشئين الاساسيين 
+• حذف جميع الرتب
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• [Source Channel](https://t.me/TeAm_VeCto)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList5:(.*)') then
+local Abbs = DataText:match('/HelpList5:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+if not Admin(data) then
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
+end
+local Help = DevAbs:get(VeCto..'Abs:Help5')
+local Text = [[
+• اوامر المطورين ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• الكروبات
+• المطورين
+• المشتركين
+• الاحصائيات
+• المجموعات
+• اسم البوت + غادر
+• اسم البوت + تعطيل
+• كشف + -ايدي المجموعه
+• رفع مالك • تنزيل مالك
+• المالكين • حذف المالكين
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• رفع • تنزيل ↫ مدير عام
+• حذف • المدراء العامين 
+• رفع • تنزيل ↫ ادمن عام
+• حذف • الادمنيه العامين 
+• رفع • تنزيل ↫ مميز عام
+• حذف • المميزين عام 
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• اوامر المطور الاساسي ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• تحديث
+• الملفات
+• المتجر
+• السيرفر
+• روابط الكروبات
+• تحديث السورس
+• تنظيف الكروبات
+• تنظيف المشتركين
+• حذف جميع الملفات
+• تعيين الايدي العام
+• تغير المطور الاساسي
+• حذف معلومات الترحيب
+• تغير معلومات الترحيب
+• غادر + -ايدي المجموعه
+• تعيين عدد الاعضاء + العدد
+• حظر عام • الغاء العام
+• كتم عام • الغاء العام
+• قائمه العام • حذف قائمه العام
+• وضع • حذف ↫ اسم البوت
+• اضف • حذف ↫ رد عام
+• ردود المطور • حذف ردود المطور
+• تعيين • حذف • جلب ↫ رد الخاص
+• جلب نسخه الكروبات
+• رفع النسخه + بالرد على الملف
+• تعيين • حذف ↫ قناة الاشتراك
+• جلب كليشه الاشتراك
+• تغيير • حذف ↫ كليشه الاشتراك
+• رفع • تنزيل ↫ مطور
+• المطورين • حذف المطورين
+• رفع • تنزيل ↫ مطور ثانوي
+• الثانويين • حذف الثانويين
+• تعيين • حذف ↫ كليشة الايدي
+• اذاعه للكل بالتوجيه ↫ بالرد
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• تفعيل ملف + اسم الملف
+• تعطيل ملف + اسم الملف
+• تفعيل • تعطيل + الامر ↫ ⤈
+• الاذاعه • الاشتراك الاجباري
+• ترحيب البوت • المغادره
+• البوت الخدمي • التواصل
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• [Source Channel](https://t.me/TeAm_VeCto)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+if DataText and DataText:match('/HelpList6:(.*)') then
+local Abbs = DataText:match('/HelpList6:(.*)')
+if tonumber(Abbs) == tonumber(data.sender_user_id_) then
+local Help = DevAbs:get(VeCto..'Abs:Help6')
+local Text = [[
+• اوامر الاعضاء ↫ ⤈
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• السورس • موقعي • رتبتي • معلوماتي 
+• رقمي • لقبي • نبذتي • صلاحياتي • غنيلي
+• رسائلي • حذف رسائلي • اسمي • معرفي 
+• ايدي •ايديي • جهاتي • راسلني • الالعاب 
+• نقاطي • بيع نقاطي • القوانين • زخرفه 
+• رابط الحذف • نزلني • اطردني • المطور 
+• منو ضافني • مشاهدات المنشور • الرابط 
+• ايدي المجموعه • معلومات المجموعه 
+• نسبه الحب • نسبه الكره • نسبه الغباء 
+• نسبه الرجوله • نسبه الانوثه • التفاعل
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• لقبه + بالرد
+• كول + الكلمه
+• زخرفه + اسمك
+• برج + نوع البرج
+• معنى اسم + الاسم
+• بوسه • بوسها ↫ بالرد
+• احسب + تاريخ ميلادك
+• رفع مطي • تنزيل مطي • المطايه
+• هينه • هينها ↫ بالرد • بالمعرف
+• صيحه • صيحها ↫ بالرد • بالمعرف
+• صلاحياته ↫ بالرد • بالمعرف • بالايدي
+• ايدي • كشف  ↫ بالرد • بالمعرف • بالايدي
+• تحويل + بالرد ↫ صوره • ملصق • صوت • بصمه
+• انطق + الكلام تدعم جميع اللغات مع الترجمه للعربي
+┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
+• [Source Channel](https://t.me/TeAm_VeCto)
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
+return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+else
+return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+end
+end
+end
+
+
 
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then  
 
@@ -9204,6 +9604,7 @@ end,nil)
 end,nil) 
 end,nil)
 end
+
 
 if Chat_Type == 'UserBot' then
 if text == '/start' then  
@@ -9795,21 +10196,6 @@ end --- Chat_Type = 'UserBot'
 end
 end
 function tdcli_update_callback(data)
-if DAata and DAata:match("^(%d+):cancelRd(.*)$") then
-local notId  = DAata:match("(%d+)")  
-if tonumber(data.sender_user_id_) ~= tonumber(notId) then  
-local notText = '• عذرا الاوامر هذه لا تخصك'
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
-return false
-end
-if database:get(bot_id.."VeCto:Set:Manager:rd"..data.sender_user_id_..":"..data.chat_id_) then
-database:del(bot_id.."VeCto:Set:Manager:rd"..data.sender_user_id_..":"..data.chat_id_)
-https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
-https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape("❈︙تم الغاء الامر بنجاح").."&show_alert=true")
-else
-https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
-end
-end
 if data.ID == "UpdateNewCallbackQuery" then
 local Chat_id = data.chat_id_
 local From_id = data.id_
@@ -9820,75 +10206,89 @@ if DAata and DAata:match("^animation(.*)$") and Addictive(data) then
 idch = DAata:match("-100(%d+)")
 local idchci = "-100"..idch
 local animation = DAata:match("^animation(.*)$"):gsub('chatid',''):gsub('chatid',''):gsub(idch,''):gsub('-100','')
-local Text =" • تم اللغاء منعها بنجاح"
+local Text ="• تم اللغاء منعها بنجاح"
 inline = {
-{{text = ' •  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾  .',url='http://t.me/TEAM_VeCto'}},
+{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/fBBBBB'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
-database:srem(bot_id.."VeCto:List:Filter:Animation"..idchci,animation)  
+database:srem(bot_id.."Mega:List:Filter:Animation"..idchci,animation)  
 end
 if DAata and DAata:match("^pito(.*)$") and Addictive(data) then  
-local idchci = database:get(bot_id.."VeCto:Filter:msg")
+local idchci = database:get(bot_id.."Mega:Filter:msg")
 local photo = DAata:match("^pito(.*)$")
-local Text =" • تم اللغاء منعها بنجاح"
+local Text ="• تم اللغاء منعها بنجاح"
 inline = {
-{{text = ' •  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾  .',url='http://t.me/TEAM_VeCto'}},
+{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/fBBBBB'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
-database:srem(bot_id.."VeCto:List:Filter:Photo"..idchci,photo)  
+database:srem(bot_id.."Mega:List:Filter:Photo"..idchci,photo)  
 end
 if DAata and DAata:match("^Sticker(.*)$") and Addictive(data) then  
 idch = DAata:match("-100(%d+)")
 local idchci = "-100"..idch
 local Sticker = DAata:match("^Sticker(.*)$"):gsub('chatid',''):gsub('chatid',''):gsub(idch,''):gsub('-100','')
-local Text =" • تم اللغاء منعه بنجاح"
+local Text ="• تم اللغاء منعه بنجاح"
 inline = {
-{{text = ' •  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾  .',url='http://t.me/TEAM_VeCto'}},
+{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/fBBBBB'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
-database:srem(bot_id.."VeCto:List:Filter:Sticker"..idchci,Sticker)  
+database:srem(bot_id.."Mega:List:Filter:Sticker"..idchci,Sticker)  
 end
 if DAata and DAata:match("^delallSticker(.*)$") and Addictive(data) then  
 local delallSticker = DAata:match("^delallSticker(.*)$")
-local Text =" • تم اللغاء منع كل المتحركات"
+local Text ="• تم اللغاء منع كل المتحركات"
 inline = {
-{{text = ' •  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾  .',url='http://t.me/TEAM_VeCto'}},
+{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾  .',url='http://t.me/fBBBBB'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
-local listSticker = database:smembers(bot_id.."VeCto:List:Filter:Sticker"..delallSticker)  
+local listSticker = database:smembers(bot_id.."Mega:List:Filter:Sticker"..delallSticker)  
 for k,v in pairs(listSticker) do  
-database:srem(bot_id.."VeCto:List:Filter:Sticker"..delallSticker,v)  
+database:srem(bot_id.."Mega:List:Filter:Sticker"..delallSticker,v)  
 end  
 end
 if DAata and DAata:match("^delallanimation(.*)$") and Addictive(data) then  
 local delallmation = DAata:match("^delallanimation(.*)$")
-local Text =" • تم اللغاء منع كل المتحركات"
+local Text ="• تم اللغاء منع كل المتحركات"
 inline = {
-{{text = ' •  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾  .',url='http://t.me/TEAM_VeCto'}},
+{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/fBBBBB'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
-local listAnimation = database:smembers(bot_id.."VeCto:List:Filter:Animation"..delallmation)  
+local listAnimation = database:smembers(bot_id.."Mega:List:Filter:Animation"..delallmation)  
 for k,v in pairs(listAnimation) do  
-database:srem(bot_id.."VeCto:List:Filter:Animation"..delallmation,v)  
+database:srem(bot_id.."Mega:List:Filter:Animation"..delallmation,v)  
 end  
 end
 if DAata and DAata:match("^delallph(.*)$") and Addictive(data) then  
 local delallph = DAata:match("^delallph(.*)$")
-local Text =" • تم اللغاء منع كل الصور"
+local Text ="• تم اللغاء منع كل الصور"
 inline = {
-{{text = ' •  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾  .',url='http://t.me/TEAM_VeCto'}},
+{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/fBBBBB'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
-local listPhoto = database:smembers(bot_id.."VeCto:List:Filter:Photo"..delallph)  
+local listPhoto = database:smembers(bot_id.."Mega:List:Filter:Photo"..delallph)  
 for k,v in pairs(listPhoto) do  
-database:srem(bot_id.."VeCto:List:Filter:Photo"..delallph,v)  
+database:srem(bot_id.."Mega:List:Filter:Photo"..delallph,v)  
 end  
+end
+if DAata and DAata:match("^(%d+):cancelRd(.*)$") then
+local notId  = DAata:match("(%d+)")  
+if tonumber(data.sender_user_id_) ~= tonumber(notId) then  
+local notText = '• عذرا الاوامر هذه لا تخصك'
+https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
+return false
+end
+if database:get(bot_id.."Mega:Set:Manager:rd"..data.sender_user_id_..":"..data.chat_id_) then
+database:del(bot_id.."Mega:Set:Manager:rd"..data.sender_user_id_..":"..data.chat_id_)
+https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
+https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape("• تم الغاء الامر بنجاح").."&show_alert=true")
+else
+https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 end
 end
 if (data.ID == "UpdateNewMessage") then
