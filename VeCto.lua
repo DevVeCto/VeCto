@@ -291,14 +291,6 @@ if not req.ok then
 return false end 
 return req 
 end
-function SendV(chat_id,reply,voice,caption) 
-SendVo = https.request("https://api.telegram.org/bot"..token.."/sendVoice?chat_id="..chat_id.."&voice="..URL.escape(voice).."&caption="..URL.escape(caption).."&reply_to_message_id"..reply.."&parse_mode=MARKDOWN")      
-return SendVo
-end 
-function SendP(chat_id,reply,photo,caption) 
-SendP = https.request("https://api.telegram.org/bot"..token.."/sendphoto?chat_id="..chat_id.."&photo="..URL.escape(photo).."&caption="..URL.escape(caption).."&reply_to_message_id"..reply.."&parse_mode=MARKDOWN")      
-return SendP
-end 
 function sendText(chat_id, text, reply_to_message_id, markdown) 
 send_api = "https://api.telegram.org/bot"..token 
 local url = send_api.."/sendMessage?chat_id=" .. chat_id .. "&text=" .. URL.escape(text) 
@@ -332,10 +324,13 @@ send_api = send_api.."&reply_to_message_id="..msg_id
 end 
 return s_api(send_api) 
 end
-function send_inline_Media(chat_id,iny,x,cx,inline,reply_id) 
+function send_inline_Media(chat_id,iny,x,cx,inline,reply_id,sh) 
 local keyboard = {} 
 keyboard.inline_keyboard = inline 
-local send_api = "https://api.telegram.org/bot"..token.."/"..iny.."?chat_id="..chat_id.."&"..x.."="..cx.."&reply_markup="..URL.escape(JSON.encode(keyboard)) 
+local send_api = "https://api.telegram.org/bot"..token.."/"..iny.."?chat_id="..chat_id.."&"..x.."="..cx.."&parse_mode=Markdown&reply_markup="..URL.escape(JSON.encode(keyboard)) 
+if sh then 
+send_api = send_api.."&caption="..sh 
+end 
 if reply_id then 
 local msg_id = reply_id/2097152/0.5
 send_api = send_api.."&reply_to_message_id="..msg_id 
