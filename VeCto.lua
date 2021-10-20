@@ -8793,7 +8793,6 @@ end
 
 
 if text == 'الاوامر' then
-if Addictive(msg) then
 Text =[[
 *•  هناك {5} اوامر لعرضها*
 
