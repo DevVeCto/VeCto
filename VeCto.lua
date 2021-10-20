@@ -8786,7 +8786,7 @@ end
 
 
 
-if text == 'الاوامر' and Addictive(msg) then
+if text == "الاوامر" and Addictive(msg) then
 Text =[[
 *•  هناك {5} اوامر لعرضها*
 
@@ -8795,12 +8795,12 @@ Text =[[
 *•  م3 ↺لعرض اوامر المدراء*
 *• م4 ↺لعرض اوامر المنشئين*
 *• م5 ↺لعرض اوامر المطورين*
+
 [• Ch Source](t.me/TeAm_VeCto)
 ]]
 send(msg.chat_id_, msg.id_,Text)
 return false
 end
-
 if text == 'م1' and Addictive(msg) then
 Text = [[
 • اوامر حمايه القروب
@@ -9017,8 +9017,6 @@ Text = [[
 send(msg.chat_id_, msg.id_,Text)
 return false
 end
-
-
 
 
 end ---- Chat_Type = 'GroupBot' 
