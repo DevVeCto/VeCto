@@ -8758,401 +8758,1291 @@ send(msg.chat_id_, msg.id_, "* • تم التحديث*")
 end
 
 
-if DataText and DataText:match('/HideHelpList:(.*)') then
-local Abbs = DataText:match('/HideHelpList:(.*)')
-if tonumber(Abbs) == tonumber(data.sender_user_id_) then
-EditMsg(Chat_Id2, Msg_Id2, "• تم اخفاء كليشة الاوامر") 
-else
-return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
-end
-end
-if DataText and DataText:match('/HelpList:(.*)') then
-local Abbs = DataText:match('/HelpList:(.*)')
-if tonumber(Abbs) == tonumber(data.sender_user_id_) then
-local Help = DevAbs:get(VeCto..'Abs:Help')
-local Text = [[
-• اهلا بك في قائمة الاوامر ↫ ⤈ 
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• م1 ↫ اوامر الحمايه
-• م2 ↫ اوامر الادمنيه
-• م3 ↫ اوامر المدراء
-• م4 ↫ اوامر المنشئين
-• م5 ↫ اوامر المطورين
-• م6 ↫ اوامر الاعضاء
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• [Source Channel](https://t.me/TeAm_VeCto)
-]] 
-keyboard = {} 
-keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}}}
-return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-else
-return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
-end
-end
-if DataText and DataText:match('/HelpList1:(.*)') then
-local Abbs = DataText:match('/HelpList1:(.*)')
-if tonumber(Abbs) == tonumber(data.sender_user_id_) then
-if not Admin(data) then
-return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
-end
-local Help = DevAbs:get(VeCto..'Abs:Help1')
-local Text = [[
-• اوامر حماية المجموعه ↫ ⤈
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• قفل • فتح ↫ الروابط
-• قفل • فتح ↫ المعرفات
-• قفل • فتح ↫ البوتات
-• قفل • فتح ↫ المتحركه
-• قفل • فتح ↫ الملصقات
-• قفل • فتح ↫ الملفات
-• قفل • فتح ↫ الصور
-• قفل • فتح ↫ الفيديو
-• قفل • فتح ↫ الاونلاين
-• قفل • فتح ↫ الدردشه
-• قفل • فتح ↫ التوجيه
-• قفل • فتح ↫ الاغاني
-• قفل • فتح ↫ الصوت
-• قفل • فتح ↫ الجهات
-• قفل • فتح ↫ الماركداون
-• قفل • فتح ↫ التكرار
-• قفل • فتح ↫ الهاشتاك
-• قفل • فتح ↫ التعديل
-• قفل • فتح ↫ التثبيت
-• قفل • فتح ↫ الاشعارات
-• قفل • فتح ↫ الكلايش
-• قفل • فتح ↫ الدخول
-• قفل • فتح ↫ الشبكات
-• قفل • فتح ↫ المواقع
-• قفل • فتح ↫ الفشار
-• قفل • فتح ↫ الكفر
-• قفل • فتح ↫ الطائفيه
-• قفل • فتح ↫ الكل
-• قفل • فتح ↫ العربيه
-• قفل • فتح ↫ الانكليزيه
-• قفل • فتح ↫ الفارسيه
-• قفل • فتح ↫ التفليش
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• اوامر حمايه اخرى ↫ ⤈
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• قفل • فتح + الامر ↫ ⤈
-• التكرار بالطرد
-• التكرار بالكتم
-• التكرار بالتقيد
-• الفارسيه بالطرد
-• البوتات بالطرد
-• البوتات بالتقيد
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• [Source Channel](https://t.me/TeAm_VeCto)
+if Text and Text:match('(.*)/help1') and Addictive(data) then
+if tonumber(Text:match('(.*)/help1')) == tonumber(data.sender_user_id_) then
+local Teext =[[
+📮┇ اوامر حمايه المجموعه
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+⏺┇قفل/فتح + الاوامر الادناه 
+⏺┇قفل/فتح + الامر بالتقيد • بالطرد • بالكتم
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+🔐┇الروابط
+🔐┇المعرف
+🔐┇التاك
+🔐┇الشارحه
+🔐┇التعديل
+🔐┇التثبيت
+🔐┇المتحركه
+🔐┇الملفات
+🔐┇الصور
+
+🔐┇الملصقات
+🔐┇الفيديو
+🔐┇الانلاين
+🔐┇الدردشه
+🔐┇التوجيه
+🔐┇الاغاني
+🔐┇الصوت
+🔐┇الجهات
+🔐┇الاشعارات
+
+🔐┇الماركداون
+🔐┇البوتات
+🔐┇التكرار
+🔐┇الكلايش
+🔐┇السيلفي
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+📡┇Ch ~⪼ [@DD0DD]
 ]]
 keyboard = {} 
-keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
-return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-else
-return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+keyboard.inline_keyboard = {
+{
+{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=data.sender_user_id_.."/help5"},
+},
+{
+{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 end
-if DataText and DataText:match('/HelpList2:(.*)') then
-local Abbs = DataText:match('/HelpList2:(.*)')
-if tonumber(Abbs) == tonumber(data.sender_user_id_) then
-if not Admin(data) then
-return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
-end
-local Help = DevAbs:get(VeCto..'Abs:Help2')
-local Text = [[
-• اوامر الادمنيه ↫ ⤈
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• الاعدادت
-• تاك للكل 
-• انشاء رابط
-• ضع وصف
-• ضع رابط
-• ضع صوره
-• حذف الرابط
-• حذف المطايه
-• كشف البوتات
-• طرد البوتات
-• تنظيف + العدد
-• تنظيف التعديل
-• كللهم + الكلمه
-• اسم البوت + الامر
-• ضع • حذف ↫ ترحيب
-• ضع • حذف ↫ قوانين
-• اضف • حذف ↫ صلاحيه
-• الصلاحيات • حذف الصلاحيات
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• ضع سبام + العدد
-• ضع تكرار + العدد
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• رفع مميز • تنزيل مميز
-• المميزين • حذف المميزين
-• كشف القيود • رفع القيود
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• حذف • مسح + بالرد
-• منع • الغاء منع
-• قائمه المنع
-• حذف قائمه المنع
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• تفعيل • تعطيل ↫ الرابط
-• تفعيل • تعطيل ↫ الالعاب
-• تفعيل • تعطيل ↫ الترحيب
-• تفعيل • تعطيل ↫ التاك للكل
-• تفعيل • تعطيل ↫ كشف الاعدادات
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• طرد المحذوفين
-• طرد ↫ بالرد • بالمعرف • بالايدي
-• كتم • الغاء كتم
-• تقيد • الغاء تقيد
-• حظر • الغاء حظر
-• المكتومين • حذف المكتومين
-• المقيدين • حذف المقيدين
-• المحظورين • حذف المحظورين
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• تقييد دقيقه + عدد الدقائق
-• تقييد ساعه + عدد الساعات
-• تقييد يوم + عدد الايام
-• الغاء تقييد ↫ لالغاء التقييد بالوقت
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• [Source Channel](https://t.me/TeAm_VeCto)
+if Text and Text:match('(.*)/help2') and Addictive(data) then
+if tonumber(Text:match('(.*)/help2')) == tonumber(data.sender_user_id_) then
+local Teext =[[
+🥈┇اوامر الادمنيه
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+▶️┇رفع/تنزيل مميز
+📮┇تاك للكل
+📮┇عدد الكروب
+🚫┇كتم
+🚷┇حظر
+🚷┇طرد
+🚫┇منع
+🚫┇تقيد
+⏺┇الغاء حظر
+⏺┇الغاء كتم
+⏺┇الغاء تقيد
+⏺┇الغاء منع
+📋┇المحظورين
+📋┇المكتومين
+📋┇المميزين
+📋┇الصلاحيات
+📋┇قائمه المنع
+
+〽┇تثبيت
+⏺┇الغاء تثبيت
+📄┇الاعدادات
+
+🗳┇الرابط
+📃┇القوانين
+
+👋🏻┇الترحيب
+👋🏻┇تفعيل/تعطيل الترحيب
+⚠️┇اضف /مسح صلاحيه 
+⚠️┇وضع تكرار + العدد
+💭┇ايدي
+💭┇جهاتي
+💭┇سحكاتي
+💭┇رسائلي
+💭┇كشف البوتات
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+🔘┇وضع + الاوامر الادناه
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+📝┇اسم
+📝┇رابط
+📝┇صوره
+📝┇وصف
+📝┇قوانين
+??┇ترحيب
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+🗑┇مسح + الاوامر الادناه
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+📮┇قائمه المنع
+📮┇المحظورين
+📮┇المميزين
+📮┇المكتومين
+📮┇المطرودين
+📮┇القوانين
+📮┇البوتات
+📮┇الصوره
+📮┇الصلاحيات
+📮┇الرابط
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+📡┇CH [@DD0DD]
 ]]
 keyboard = {} 
-keyboard.inline_keyboard = {{{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
-return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-else
-return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+keyboard.inline_keyboard = {
+{
+{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=data.sender_user_id_.."/help5"},
+},
+{
+{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 end
-if DataText and DataText:match('/HelpList3:(.*)') then
-local Abbs = DataText:match('/HelpList3:(.*)')
-if tonumber(Abbs) == tonumber(data.sender_user_id_) then
-if not Admin(data) then
-return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
-end
-local Help = DevAbs:get(VeCto..'Abs:Help3')
-local Text = [[
-• اوامر المدراء ↫ ⤈
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• فحص البوت
-• ضع اسم + الاسم
-• اضف • حذف ↫ رد
-• ردود المدير
-• حذف ردود المدير
-• اضف • حذف ↫ رد متعدد
-• حذف رد من متعدد
-• الردود المتعدده
-• حذف الردود المتعدده
-• حذف قوائم المنع
-• منع ↫ بالرد على ( ملصق • صوره • متحركه )
-• حذف قائمه منع + ↫ ⤈
-( الصور • المتحركات • الملصقات )
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• تنزيل الكل
-• رفع ادمن • تنزيل ادمن
-• الادمنيه • حذف الادمنيه
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• تثبيت
-• الغاء التثبيت
-• اعاده التثبيت
-• الغاء تثبيت الكل
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• تغير رد + اسم الرتبه + النص ↫ ⤈
-• المطور • منشئ الاساسي
-• المنشئ • المدير • الادمن
-• المميز • المنظف • العضو
-• حذف ردود الرتب
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• تغيير الايدي ↫ لتغيير الكليشه
-• تعيين الايدي ↫ لتعيين الكليشه
-• حذف الايدي ↫ لحذف الكليشه
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• تفعيل • تعطيل + الامر ↫ ⤈
-• اطردني • الايدي بالصوره • الابراج
-• معاني الاسماء • اوامر النسب • انطق
-• الايدي • تحويل الصيغ • اوامر التحشيش
-• ردود المدير • ردود المطور • التحقق
-• ضافني • حساب العمر • الزخرفه • غنيلي
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• [Source Channel](https://t.me/TeAm_VeCto)
+if Text and Text:match('(.*)/help3') and Owner(data) then
+if tonumber(Text:match('(.*)/help3')) == tonumber(data.sender_user_id_) then
+local Teext =[[
+🥇┇ اوامر المدراء
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+↕️┇رفع/تنزيل ادمن
+↕️┇رفع/كشف القيود
+↕️┇تنزيل الكل
+
+💬┇تفعيل/تعطيل الايدي بالصوره
+💬┇تفعيل/تعطيل الايدي
+💬┇تفعيل/تعطيل ردود المطور
+💬┇تفعيل/تعطيل اللعبه/الالعاب
+💬┇تفعيل/تعطيل ردود المدير
+💬┇تفعيل/تعطيل اطردني
+💬┇تفعيل/تعطيل الرفع
+💬┇تفعيل/تعطيل الحظر/الطرد
+💬┇تفعيل/تعطيل الرابط/جلب الرابط
+💬┇تفعيل/تعطيل اوامر التحشيش
+
+♨️┇تعين/مسح الايدي
+
+🖇┇رفع الادمنيه
+🖇┇اضف/حذف رد
+📋┇الادمنيه
+📋┇ردود المدير
+
+🗑┇تنظيف + عدد
+🗑┇مسح الادمنيه
+🗑┇مسح ردود المدير
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+🔘┇لتغير ردود الايدي :- 
+تغير رد المطور + النص
+تغير رد المنشئ الاساسي + النص
+تغير رد المنشئ + النص
+تغير رد المدير + النص
+تغير رد الادمن + النص
+تغير رد المميز + النص
+تغير رد العضو + النص
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+📡┇CH [@DD0DD]
 ]]
 keyboard = {} 
-keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
-return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-else
-return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+keyboard.inline_keyboard = {
+{
+{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=data.sender_user_id_.."/help5"},
+},
+{
+{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 end
-if DataText and DataText:match('/HelpList4:(.*)') then
-local Abbs = DataText:match('/HelpList4:(.*)')
-if tonumber(Abbs) == tonumber(data.sender_user_id_) then
-if not Admin(data) then
-return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
-end
-local Help = DevAbs:get(VeCto..'Abs:Help4')
-local Text = [[
-• اوامر المنشئين ↫ ⤈
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• تنزيل الكل
-• الميديا • امسح
-• تعين عدد الحذف
-• ترتيب الاوامر
-• اضف • حذف ↫ امر
-• حذف الاوامر المضافه
-• الاوامر المضافه
-• اضف نقاط ↫ بالرد • بالايدي
-• اضف رسائل ↫ بالرد • بالايدي
-• رفع منظف • تنزيل منظف
-• المنظفين • حذف المنظفين
-• رفع مدير • تنزيل مدير
-• المدراء • حذف المدراء
-• تفعيل • تعطيل + الامر ↫ ⤈
-• نزلني • امسح
-• الحظر • الكتم
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• اوامر المنشئين الاساسيين ↫ ⤈
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• وضع لقب + اللقب
-• تفعيل • تعطيل ↫ الرفع
-• رفع منشئ • تنزيل منشئ
-• المنشئين • حذف المنشئين
-• رفع • تنزيل ↫ مشرف
-• رفع بكل الصلاحيات
-• حذف القوائم
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• اوامر المالكين ↫ ⤈
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• رفع • تنزيل ↫ منشئ اساسي
-• حذف المنشئين الاساسيين 
-• المنشئين الاساسيين 
-• حذف جميع الرتب
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• [Source Channel](https://t.me/TeAm_VeCto)
+if Text and Text:match('(.*)/help4') and Constructor(data) then
+if tonumber(Text:match('(.*)/help4')) == tonumber(data.sender_user_id_) then
+local Teext =[[
+🏅┇اوامر المنشئين الاساسين 
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+↕️┇رفع/تنزيل منشئ
+↕️┇المنشئين
+🗑┇مسح المنشئين
+
+🏅┇اوامر المنشئين
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+↕️┇رفع/تنزيل مدير
+↕️┇المدراء
+🗑┇مسح المدراء
+🔘┇تعين/مسح الايدي
+➕┇اضف/حذف امر
+➕┇الاوامر المضافه
+➕┇حذف/مسح الاوامر المضافه
+➕┇اضف رسائل + العدد بالرد
+➕┇اضف مجوهرات + العدد بالرد
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+📡┇CH [@DD0DD]
 ]]
 keyboard = {} 
-keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_},{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
-return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-else
-return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+keyboard.inline_keyboard = {
+{
+{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=data.sender_user_id_.."/help5"},
+},
+{
+{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 end
-if DataText and DataText:match('/HelpList5:(.*)') then
-local Abbs = DataText:match('/HelpList5:(.*)')
-if tonumber(Abbs) == tonumber(data.sender_user_id_) then
-if not Admin(data) then
-return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
-end
-local Help = DevAbs:get(VeCto..'Abs:Help5')
-local Text = [[
-• اوامر المطورين ↫ ⤈
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• الكروبات
-• المطورين
-• المشتركين
-• الاحصائيات
-• المجموعات
-• اسم البوت + غادر
-• اسم البوت + تعطيل
-• كشف + -ايدي المجموعه
-• رفع مالك • تنزيل مالك
-• المالكين • حذف المالكين
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• رفع • تنزيل ↫ مدير عام
-• حذف • المدراء العامين 
-• رفع • تنزيل ↫ ادمن عام
-• حذف • الادمنيه العامين 
-• رفع • تنزيل ↫ مميز عام
-• حذف • المميزين عام 
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• اوامر المطور الاساسي ↫ ⤈
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• تحديث
-• الملفات
-• المتجر
-• السيرفر
-• روابط الكروبات
-• تحديث السورس
-• تنظيف الكروبات
-• تنظيف المشتركين
-• حذف جميع الملفات
-• تعيين الايدي العام
-• تغير المطور الاساسي
-• حذف معلومات الترحيب
-• تغير معلومات الترحيب
-• غادر + -ايدي المجموعه
-• تعيين عدد الاعضاء + العدد
-• حظر عام • الغاء العام
-• كتم عام • الغاء العام
-• قائمه العام • حذف قائمه العام
-• وضع • حذف ↫ اسم البوت
-• اضف • حذف ↫ رد عام
-• ردود المطور • حذف ردود المطور
-• تعيين • حذف • جلب ↫ رد الخاص
-• جلب نسخه الكروبات
-• رفع النسخه + بالرد على الملف
-• تعيين • حذف ↫ قناة الاشتراك
-• جلب كليشه الاشتراك
-• تغيير • حذف ↫ كليشه الاشتراك
-• رفع • تنزيل ↫ مطور
-• المطورين • حذف المطورين
-• رفع • تنزيل ↫ مطور ثانوي
-• الثانويين • حذف الثانويين
-• تعيين • حذف ↫ كليشة الايدي
-• اذاعه للكل بالتوجيه ↫ بالرد
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• تفعيل ملف + اسم الملف
-• تعطيل ملف + اسم الملف
-• تفعيل • تعطيل + الامر ↫ ⤈
-• الاذاعه • الاشتراك الاجباري
-• ترحيب البوت • المغادره
-• البوت الخدمي • التواصل
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• [Source Channel](https://t.me/TeAm_VeCto)
+if Text and Text:match('(.*)/help5') and DevBot(data) then
+if tonumber(Text:match('(.*)/help5')) == tonumber(data.sender_user_id_) then
+local Teext =[[
+👁‍🗨┇اوامر المطور الاساسي  
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+↕️┇حظر عام
+↕️┇الغاء العام
+🗑┇مسح قائمه العام
+🚧┇تغير اسم البوت
+📥┇اضف /حذف مطور 
+👁‍🗨┇المطورين
+🗑┇مسح المطورين
+📋┇اضف/حذف رد للكل 
+📋┇مسح ردود المطور
+📋┇ردود المطور 
+📋┇وضع /حذف كليشه المطور 
+
+☑️┇تحديث  + تحديث السورس 
+
+📥┇تفعيل/تعطيل البوت الخدمي 
+📥┇ تعين عدد الاعضاء + العدد
+📥┇تفعيل/تعطيل المغادرة
+📥┇تفعيل/تعطيل الاذاعه 
+📥┇تفعيل/تعطيل ملف + اسم الملف
+📈┇الملفات 
+🗑┇مسح جميع الملفات 
+📄┇المتجر 
+🏅┇اوامر المطور 
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+👁‍🗨┇تفعيل /تعطيل
+
+↕️┇رفع/تنزيل منشئ اساسي
+↕️┇رفع منشئ 
+🗑┇مسح المنشئين الاساسين
+🔘┇المنشئين الاساسين 
+➕┇غادر 
+➕┇غادر + الايدي
+➕┇اذاعه 
+➕┇اذاعه بالتوجيه
+➕┇اذاعه خاص 
+➕┇اذاعه بالتثبيت 
+➕┇الاحصائيات 
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+📡┇CH [@DD0DD]
 ]]
 keyboard = {} 
-keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر الاعضاء",callback_data="/HelpList6:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
-return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-else
-return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+keyboard.inline_keyboard = {
+{
+{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=data.sender_user_id_.."/help5"},
+},
+{
+{text = 'الاوامر الرئيسيه', callback_data=data.sender_user_id_.."/help"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
 end
 end
-if DataText and DataText:match('/HelpList6:(.*)') then
-local Abbs = DataText:match('/HelpList6:(.*)')
-if tonumber(Abbs) == tonumber(data.sender_user_id_) then
-local Help = DevAbs:get(VeCto..'Abs:Help6')
-local Text = [[
-• اوامر الاعضاء ↫ ⤈
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• السورس • موقعي • رتبتي • معلوماتي 
-• رقمي • لقبي • نبذتي • صلاحياتي • غنيلي
-• رسائلي • حذف رسائلي • اسمي • معرفي 
-• ايدي •ايديي • جهاتي • راسلني • الالعاب 
-• نقاطي • بيع نقاطي • القوانين • زخرفه 
-• رابط الحذف • نزلني • اطردني • المطور 
-• منو ضافني • مشاهدات المنشور • الرابط 
-• ايدي المجموعه • معلومات المجموعه 
-• نسبه الحب • نسبه الكره • نسبه الغباء 
-• نسبه الرجوله • نسبه الانوثه • التفاعل
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• لقبه + بالرد
-• كول + الكلمه
-• زخرفه + اسمك
-• برج + نوع البرج
-• معنى اسم + الاسم
-• بوسه • بوسها ↫ بالرد
-• احسب + تاريخ ميلادك
-• رفع مطي • تنزيل مطي • المطايه
-• هينه • هينها ↫ بالرد • بالمعرف
-• صيحه • صيحها ↫ بالرد • بالمعرف
-• صلاحياته ↫ بالرد • بالمعرف • بالايدي
-• ايدي • كشف  ↫ بالرد • بالمعرف • بالايدي
-• تحويل + بالرد ↫ صوره • ملصق • صوت • بصمه
-• انطق + الكلام تدعم جميع اللغات مع الترجمه للعربي
-┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉
-• [Source Channel](https://t.me/TeAm_VeCto)
+if Text and Text:match('(.*)/help') and Addictive(data) then
+if tonumber(Text:match('(.*)/help')) == tonumber(data.sender_user_id_) then
+local Teext =[[
+📮┇هناك {5} اوامر لعرضها
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+🗑┇م1 ~⪼ لعرض اوامر الحمايه
+📚┇م2 ~⪼ لعرض اوامر الادمنيه
+🗓┇م3 ~⪼ لعرض اوامر المدراء
+🎖┇م4 ~⪼ لعرض اوامر المنشئين
+👤┇م5 ~⪼ لعرض اوامر المطورين
+┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉
+📡┇CH [@DD0DD]
 ]]
 keyboard = {} 
-keyboard.inline_keyboard = {{{text="اوامر الادمنيه",callback_data="/HelpList2:"..data.sender_user_id_},{text="اوامر الحمايه",callback_data="/HelpList1:"..data.sender_user_id_}},{{text="اوامر المنشئين",callback_data="/HelpList4:"..data.sender_user_id_},{text="اوامر المدراء",callback_data="/HelpList3:"..data.sender_user_id_}},{{text="اوامر المطورين",callback_data="/HelpList5:"..data.sender_user_id_}},{{text="• اخفاء الكليشه •",callback_data="/HideHelpList:"..data.sender_user_id_}},{{text="• رجوع •",callback_data="/HelpList:"..data.sender_user_id_}}}
-return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Help or Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-else
-return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌁ عذرا الامر ليس لك .")..'&show_alert=true')
+keyboard.inline_keyboard = {
+{
+{text = 'م1', callback_data=data.sender_user_id_.."/help1"},{text = 'م2', callback_data=data.sender_user_id_.."/help2"},{text = 'م3', callback_data=data.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=data.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=data.sender_user_id_.."/help5"},
+},
+{
+{text = 'اوامر التعطيل', callback_data=data.sender_user_id_.."/homeaddrem"},{text = 'اوامر القفل', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Teext)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+end
+end
+
+if Text and Text:match('(.*)/lockdul') and Owner(data) then
+if tonumber(Text:match('(.*)/lockdul')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تعطيل التنزيل '
+database:set(bot_id..'dw:bot:api'..Chat_id,true) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lock_links') and Addictive(data) then
+if tonumber(Text:match('(.*)/lock_links')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تعطيل الرابط '
+database:del(bot_id.."VeCto:Link_Group"..Chat_id) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockwelcome') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockwelcome')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تعطيل الترحيب '
+database:del(bot_id.."VeCto:Chek:Welcome"..Chat_id) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockwelcome') and Owner(data) then
+if tonumber(Text:match('(.*)/lockwelcome')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تعطيل الردود العامه '
+database:set(bot_id.."VeCto:Reply:Sudo"..Chat_id,true)   
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockide') and Owner(data) then
+if tonumber(Text:match('(.*)/lockide')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تعطيل الايدي '
+database:set(bot_id..'VeCto:Lock:ID:Bot'..Chat_id,true) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockidephoto') and Owner(data) then
+if tonumber(Text:match('(.*)/lockidephoto')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تعطيل الايدي بالصوره '
+database:set(bot_id..'VeCto:Lock:ID:Bot:Photo'..Chat_id,true) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockkiked') and Constructor(data) then
+if tonumber(Text:match('(.*)/lockkiked')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تعطيل الحظر '
+database:set(bot_id.."Add:Group:Cheking"..Chat_id,"true")
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/locksetm') and Constructor(data) then
+if tonumber(Text:match('(.*)/locksetm')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تعطيل الرفع '
+database:set(bot_id.."Add:Group:Cheking"..Chat_id,"true")
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockkikedme') and Owner(data) then
+if tonumber(Text:match('(.*)/lockkikedme')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تعطيل اطردني '
+database:set(bot_id.."VeCto:Kick:Me"..Chat_id,true)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockgames') and Owner(data) then
+if tonumber(Text:match('(.*)/lockgames')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تعطيل الالعاب '
+database:del(bot_id.."Tshak:Lock:Games"..Chat_id) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockrepgr') and Owner(data) then
+if tonumber(Text:match('(.*)/lockrepgr')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تعطيل الردود '
+database:set(bot_id.."VeCto:Reply:Manager"..Chat_id,true)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+end
+if Text and Text:match('(.*)/unlockdul') and Owner(data) then
+if tonumber(Text:match('(.*)/unlockdul')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تفعيل التنزيل '
+database:del(bot_id..'dw:bot:api'..Chat_id) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlock_links') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlock_links')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تفعيل الرابط '
+database:set(bot_id.."VeCto:Link_Group"..Chat_id,true) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockwelcome') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockwelcome')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تفعيل الترحيب '
+database:set(bot_id.."VeCto:Chek:Welcome"..Chat_id,true) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockrepall') and Owner(data) then
+if tonumber(Text:match('(.*)/unlockrepall')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تفعيل الردود العامه '
+database:del(bot_id.."VeCto:Reply:Sudo"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockide') and Owner(data) then
+if tonumber(Text:match('(.*)/unlockide')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تفعيل الايدي '
+database:del(bot_id..'VeCto:Lock:ID:Bot'..Chat_id) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockidephoto') and Owner(data) then
+if tonumber(Text:match('(.*)/unlockidephoto')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تفعيل الايدي بالصوره '
+database:del(bot_id..'VeCto:Lock:ID:Bot:Photo'..Chat_id) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockkiked') and Constructor(data) then
+if tonumber(Text:match('(.*)/unlockkiked')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تفعيل الحظر '
+database:del(bot_id.."Ban:Cheking"..Chat_id)
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlocksetm') and Constructor(data) then
+if tonumber(Text:match('(.*)/unlocksetm')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تفعيل الرفع '
+database:set(bot_id.."Add:Group:Cheking"..Chat_id,"true")
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockkikedme') and Owner(data) then
+if tonumber(Text:match('(.*)/unlockkikedme')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تفعيل اطردني '
+database:del(bot_id.."VeCto:Kick:Me"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockgames') and Owner(data) then
+if tonumber(Text:match('(.*)/unlockgames')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تفعيل الالعاب '
+database:set(bot_id.."Tshak:Lock:Games"..Chat_id,true) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockrepgr') and Owner(data) then
+if tonumber(Text:match('(.*)/unlockrepgr')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم تفعيل الردود '
+database:del(bot_id.."VeCto:Reply:Manager"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homeaddrem"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/homeaddrem') and Owner(data) then
+if tonumber(Text:match('(.*)/homeaddrem')) == tonumber(data.sender_user_id_) then
+local Texti = 'تستطيع تعطيل وتفعيل عبر الازرار'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'تعطيل التنزيل', callback_data=data.sender_user_id_.."/lockdul"},{text = 'تفعيل التنزيل', callback_data=data.sender_user_id_.."/unlockdul"},
+},
+{
+{text = 'تعطيل الرابط', callback_data=data.sender_user_id_.."/lock_links"},{text = 'تفعيل الرابط', callback_data=data.sender_user_id_.."/unlock_links"},
+},
+{
+{text = 'تعطيل الترحيب', callback_data=data.sender_user_id_.."/lockwelcome"},{text = 'تفعيل الترحيب', callback_data=data.sender_user_id_.."/unlockwelcome"},
+},
+{
+{text = 'تعطيل الردود العامه', callback_data=data.sender_user_id_.."/lockrepall"},{text = 'تفعيل الردود العامه', callback_data=data.sender_user_id_.."/unlockrepall"},
+},
+{
+{text = 'تعطيل الايدي', callback_data=data.sender_user_id_.."/lockide"},{text = 'تفعيل الايدي', callback_data=data.sender_user_id_.."/unlockide"},
+},
+{
+{text = 'تعطيل الايدي بالصوره', callback_data=data.sender_user_id_.."/lockidephoto"},{text = 'تفعيل الايدي بالصوره', callback_data=data.sender_user_id_.."/unlockidephoto"},
+},
+{
+{text = 'تعطيل الحظر', callback_data=data.sender_user_id_.."/lockkiked"},{text = 'تفعيل الحظر', callback_data=data.sender_user_id_.."/unlockkiked"},
+},
+{
+{text = 'تعطيل الرفع', callback_data=data.sender_user_id_.."/locksetm"},{text = 'تفعيل الرفع', callback_data=data.sender_user_id_.."/unlocksetm"},
+},
+{
+{text = 'تعطيل اطردني', callback_data=data.sender_user_id_.."/lockkikedme"},{text = 'تفعيل اطردني', callback_data=data.sender_user_id_.."/unlockkikedme"},
+},
+{
+{text = 'تعطيل الالعاب', callback_data=data.sender_user_id_.."/lockgames"},{text = 'تفعيل الالعاب', callback_data=data.sender_user_id_.."/unlockgames"},
+},
+{
+{text = 'تعطيل الردود', callback_data=data.sender_user_id_.."/lockrepgr"},{text = 'تفعيل الردود', callback_data=data.sender_user_id_.."/unlockrepgr"},
+},
+{
+{text = 'العوده', callback_data=data.sender_user_id_.."/help"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Texti)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+end
+end
+if Text and Text:match('(.*)/lockjoine') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockjoine')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الاضافه '
+database:set(bot_id.."VeCto:Lock:AddMempar"..Chat_id,"kick")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockchat') and Owner(data) then
+if tonumber(Text:match('(.*)/lockchat')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الدردشه '
+database:set(bot_id.."VeCto:Lock:text"..Chat_id,true) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lock_joine') and Addictive(data) then
+if tonumber(Text:match('(.*)/lock_joine')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الدخول '
+database:set(bot_id.."VeCto:Lock:Join"..Chat_id,"kick")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockbots') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockbots')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل البوتات '
+database:set(bot_id.."VeCto:Lock:Bot:kick"..Chat_id,"del")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/locktags') and Addictive(data) then
+if tonumber(Text:match('(.*)/locktags')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الاشعارات '
+database:set(bot_id.."VeCto:Lock:tagservr"..Chat_id,true)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockedit') and Owner(data) then
+if tonumber(Text:match('(.*)/lockedit')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل التعديل '
+database:set(bot_id.."VeCto:Lock:edit"..Chat_id,true) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/locklink') and Addictive(data) then
+if tonumber(Text:match('(.*)/locklink')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الروابط '
+database:set(bot_id.."VeCto:Lock:Link"..Chat_id,"del")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockusername') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockusername')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل المعرفات '
+database:set(bot_id.."VeCto:Lock:User:Name"..Chat_id,"del") 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockusername') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockusername')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل التاك '
+database:set(bot_id.."VeCto:Lock:hashtak"..Chat_id,"del")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/locksticar') and Addictive(data) then
+if tonumber(Text:match('(.*)/locksticar')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الملصقات '
+database:set(bot_id.."VeCto:Lock:Sticker"..Chat_id,"del")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockgif') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockgif')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل المتحركات '
+database:set(bot_id.."VeCto:Lock:Animation"..Chat_id,"del")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockvideo') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockvideo')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الفيديو '
+database:set(bot_id.."VeCto:Lock:Video"..Chat_id,"del")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockphoto') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockphoto')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الصور '
+database:set(bot_id.."VeCto:Lock:Photo"..Chat_id,"del")    
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockvoise') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockvoise')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الاغاني '
+database:set(bot_id.."VeCto:Lock:Audio"..Chat_id,"del")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockaudo') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockaudo')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الصوت '
+database:set(bot_id.."VeCto:Lock:vico"..Chat_id,"del")    
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockfwd') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockfwd')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل التوجيه '
+database:set(bot_id.."VeCto:Lock:forward"..Chat_id,'del')  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockfile') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockfile')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الملفات '
+database:set(bot_id.."VeCto:Lock:Document"..Chat_id,"del")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockphone') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockphone')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الجهات '
+database:set(bot_id.."VeCto:Lock:Contact"..Chat_id,"del")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockposts') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockposts')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الكلايش '
+database:set(bot_id.."VeCto:Lock:Spam"..Chat_id,"del")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockflood') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockflood')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل التكرار '
+database:hset(bot_id.."VeCto:flooding:settings:"..Chat_id ,"flood","del")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockfarse') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockfarse')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الفارسيه '
+database:set(bot_id..'lock:Fars'..Chat_id,true) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockfshar') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockfshar')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل السب '
+database:set(bot_id..'lock:Fshar'..Chat_id,true) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/lockinlene') and Addictive(data) then
+if tonumber(Text:match('(.*)/lockinlene')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم قفل الانلاين '
+database:set(bot_id.."VeCto:Lock:Inlen"..Chat_id,"del")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+end
+if Text and Text:match('(.*)/unlockjoine') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockjoine')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الاضافه '
+database:del(bot_id.."VeCto:Lock:AddMempar"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockchat') and Owner(data) then
+if tonumber(Text:match('(.*)/unlockchat')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الدردشه '
+database:del(bot_id.."VeCto:Lock:text"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlock_joine') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlock_joine')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الدخول '
+database:del(bot_id.."VeCto:Lock:Join"..Chat_id) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockbots') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockbots')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح البوتات '
+database:del(bot_id.."VeCto:Lock:Bot:kick"..Chat_id)   
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlocktags') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlocktags')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الاشعارات '
+database:del(bot_id.."VeCto:Lock:tagservr"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockedit') and Owner(data) then
+if tonumber(Text:match('(.*)/unlockedit')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح التعديل '
+database:del(bot_id.."VeCto:Lock:edit"..Chat_id) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlocklink') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlocklink')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الروابط '
+database:del(bot_id.."VeCto:Lock:Link"..Chat_id) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockusername') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockusername')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح المعرفات '
+database:del(bot_id.."VeCto:Lock:User:Name"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlocktag') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlocktag')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح التاك '
+database:del(bot_id.."VeCto:Lock:hashtak"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlocksticar') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlocksticar')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الملصقات '
+database:del(bot_id.."VeCto:Lock:Sticker"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockgif') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockgif')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح المتحركات '
+database:del(bot_id.."VeCto:Lock:Animation"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockvideo') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockvideo')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الفيديو '
+database:del(bot_id.."VeCto:Lock:Video"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockphoto') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockphoto')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الصور '
+database:del(bot_id.."VeCto:Lock:Photo"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockvoise') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockvoise')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الاغاني '
+database:del(bot_id.."VeCto:Lock:Audio"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockaudo') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockaudo')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الصوت '
+database:del(bot_id.."VeCto:Lock:vico"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockfwd') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockfwd')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح التوجيه '
+database:del(bot_id.."VeCto:Lock:forward"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockfile') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockfile')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الملفات '
+database:del(bot_id.."VeCto:Lock:Document"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockphone') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockphone')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الجهات '
+database:del(bot_id.."VeCto:Lock:Contact"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockposts') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockposts')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الكلايش '
+database:del(bot_id.."VeCto:Lock:Spam"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockflood') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockflood')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح التكرار '
+database:hdel(bot_id.."VeCto:flooding:settings:"..Chat_id ,"flood")  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockfarse') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockfarse')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الفارسيه '
+database:del(bot_id..'lock:Fars'..Chat_id) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockfshar') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockfshar')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح السب '
+database:del(bot_id..'lock:Fshar'..Chat_id) 
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/unlockinlene') and Addictive(data) then
+if tonumber(Text:match('(.*)/unlockinlene')) == tonumber(data.sender_user_id_) then
+local Textedit = '• تم فتح الانلاين '
+database:del(bot_id.."VeCto:Lock:Inlen"..Chat_id)  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'القائمة الرئيسيه', callback_data=data.sender_user_id_.."/homelocks"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Textedit)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+elseif Text and Text:match('(.*)/homelocks') and Addictive(data) then
+if tonumber(Text:match('(.*)/homelocks')) == tonumber(data.sender_user_id_) then
+local Texti = 'تستطيع قفل وفتح عبر الازرار'
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'قفل الاضافه', callback_data=data.sender_user_id_.."/lockjoine"},{text = 'فتح الاضافه', callback_data=data.sender_user_id_.."/unlockjoine"},
+},
+{
+{text = 'قفل الدردشه', callback_data=data.sender_user_id_.."/lockchat"},{text = 'فتح الدردشه', callback_data=data.sender_user_id_.."/unlockchat"},
+},
+{
+{text = 'قفل الدخول', callback_data=data.sender_user_id_.."/lock_joine"},{text = 'فتح الدخول', callback_data=data.sender_user_id_.."/unlock_joine"},
+},
+{
+{text = 'قفل البوتات', callback_data=data.sender_user_id_.."/lockbots"},{text = 'فتح البوتات', callback_data=data.sender_user_id_.."/unlockbots"},
+},
+{
+{text = 'قفل الاشعارات', callback_data=data.sender_user_id_.."/locktags"},{text = 'فتح الاشعارات', callback_data=data.sender_user_id_.."/unlocktags"},
+},
+{
+{text = 'قفل التعديل', callback_data=data.sender_user_id_.."/lockedit"},{text = 'فتح التعديل', callback_data=data.sender_user_id_.."/unlockedit"},
+},
+{
+{text = 'قفل الروابط', callback_data=data.sender_user_id_.."/locklink"},{text = 'فتح الروابط', callback_data=data.sender_user_id_.."/unlocklink"},
+},
+{
+{text = 'قفل المعرفات', callback_data=data.sender_user_id_.."/lockusername"},{text = 'فتح المعرفات', callback_data=data.sender_user_id_.."/unlockusername"},
+},
+{
+{text = 'قفل التاك', callback_data=data.sender_user_id_.."/locktag"},{text = 'فتح التاك', callback_data=data.sender_user_id_.."/unlocktag"},
+},
+{
+{text = 'قفل الملصقات', callback_data=data.sender_user_id_.."/locksticar"},{text = 'فتح الملصقات', callback_data=data.sender_user_id_.."/unlocksticar"},
+},
+{
+{text = 'قفل المتحركه', callback_data=data.sender_user_id_.."/lockgif"},{text = 'فتح المتحركه', callback_data=data.sender_user_id_.."/unlockgif"},
+},
+{
+{text = 'قفل الفيديو', callback_data=data.sender_user_id_.."/lockvideo"},{text = 'فتح الفيديو', callback_data=data.sender_user_id_.."/unlockvideo"},
+},
+{
+{text = 'قفل الصور', callback_data=data.sender_user_id_.."/lockphoto"},{text = 'فتح الصور', callback_data=data.sender_user_id_.."/unlockphoto"},
+},
+{
+{text = 'قفل الاغاني', callback_data=data.sender_user_id_.."/lockvoise"},{text = 'فتح الاغاني', callback_data=data.sender_user_id_.."/unlockvoise"},
+},
+{
+{text = 'قفل الصوت', callback_data=data.sender_user_id_.."/lockaudo"},{text = 'فتح الصوت', callback_data=data.sender_user_id_.."/unlockaudo"},
+},
+{
+{text = 'قفل التوجيه', callback_data=data.sender_user_id_.."/lockfwd"},{text = 'فتح التوجيه', callback_data=data.sender_user_id_.."/unlockfwd"},
+},
+{
+{text = 'قفل الملفات', callback_data=data.sender_user_id_.."/lockfile"},{text = 'فتح الملفات', callback_data=data.sender_user_id_.."/unlockfile"},
+},
+{
+{text = 'قفل الجهات', callback_data=data.sender_user_id_.."/lockphone"},{text = 'فتح الجهات', callback_data=data.sender_user_id_.."/unlockphone"},
+},
+{
+{text = 'قفل الكلايش', callback_data=data.sender_user_id_.."/lockposts"},{text = 'فتح الكلايش', callback_data=data.sender_user_id_.."/unlockposts"},
+},
+{
+{text = 'قفل التكرار', callback_data=data.sender_user_id_.."/lockflood"},{text = 'فتح التكرار', callback_data=data.sender_user_id_.."/unlockflood"},
+},
+{
+{text = 'قفل الفارسيه', callback_data=data.sender_user_id_.."/lockfarse"},{text = 'فتح الفارسيه', callback_data=data.sender_user_id_.."/unlockfarse"},
+},
+{
+{text = 'قفل السب', callback_data=data.sender_user_id_.."/lockfshar"},{text = 'فتح السب', callback_data=data.sender_user_id_.."/unlockfshar"},
+},
+{
+{text = 'قفل الانجليزيه', callback_data=data.sender_user_id_.."/lockenglish"},{text = 'فتح الانجليزيه', callback_data=data.sender_user_id_.."/unlockenglish"},
+},
+{
+{text = 'قفل الانلاين', callback_data=data.sender_user_id_.."/lockinlene"},{text = 'فتح الانلاين', callback_data=data.sender_user_id_.."/unlockinlene"},
+},
+{
+{text = 'العوده', callback_data=data.sender_user_id_.."/help"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessageText?chat_id='..Chat_id..'&text='..URL.escape(Texti)..'&message_id='..msg_idd..'&parse_mode=markdown&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard)) 
+end
+end
+if Text and Text:match('(%d+)/UnKed@(%d+):(%d+)') then
+local ramsesadd = {string.match(Text,"^(%d+)/UnKed@(%d+):(%d+)$")}
+if tonumber(ramsesadd[2]) == tonumber(ramsesadd[3]) then
+if tonumber(ramsesadd[1]) == tonumber(data.sender_user_id_) then
+DeleteMessage(data.chat_id_, {[0] = Msg_id})  
+https.request("https://api.telegram.org/bot" .. token .. "/restrictChatMember?chat_id=" .. data.chat_id_ .. "&user_id=" .. data.sender_user_id_ .. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
 end
 end
 end
@@ -9192,17 +10082,9 @@ end
 
 
 
-if text == 'الاوامر' and Addictive(msg) then  
-if AddChannel(msg.sender_user_id_) == false then
-local textchuser = database:get(bot_id..'text:ch:user')
-if textchuser then
-send(msg.chat_id_, msg.id_,'['..textchuser..']')
-else
-send(msg.chat_id_, msg.id_,' • عـليك الاشـتࢪاك في قنـاة البـوت اولآ . \n  • قنـاة البـوت ↺ ['..database:get(bot_id..'add:ch:username')..']')
-end
-return false
-end
-Text = [[
+if text == 'الاوامر' then
+if Addictive(msg) then
+local Text =[[
 *•  هناك {5} اوامر لعرضها*
 
 *• م1 ↺لعرض اوامر الحمايه*
@@ -9212,9 +10094,27 @@ Text = [[
 *• م5 ↺لعرض اوامر المطورين*
 [• Ch Source](t.me/TeAm_VeCto)
 ]]
-send(msg.chat_id_, msg.id_,Text)
-return false
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'م1', callback_data=msg.sender_user_id_.."/help1"},{text = 'م2', callback_data=msg.sender_user_id_.."/help2"},{text = 'م3', callback_data=msg.sender_user_id_.."/help3"},
+},
+{
+{text = 'م4', callback_data=msg.sender_user_id_.."/help4"},
+},
+{
+{text = 'م5', callback_data=msg.sender_user_id_.."/help5"},
+},
+{
+{text = 'اوامر التعطيل', callback_data=msg.sender_user_id_.."/homeaddrem"},{text = 'اوامر القفل', callback_data=msg.sender_user_id_.."/homelocks"},
+},
+}
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..token..'/sendMessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
+end
+
+
 if text == 'م1' and Addictive(msg) then
 Text = [[
 • اوامر حمايه القروب
