@@ -8792,7 +8792,7 @@ end
 
 
 
-if text == 'الاوامر' then
+if text == 'الاوامر' and Addictive(msg) then
 Text =[[
 *•  هناك {5} اوامر لعرضها*
 
@@ -9800,22 +9800,22 @@ local idchci = "-100"..idch
 local animation = DAata:match("^animation(.*)$"):gsub('chatid',''):gsub('chatid',''):gsub(idch,''):gsub('-100','')
 local Text ="• تم اللغاء منعها بنجاح"
 inline = {
-{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/fBBBBB'}},
+{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/TeAm_VeCto'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
-database:srem(bot_id.."Mega:List:Filter:Animation"..idchci,animation)  
+database:srem(bot_id.."VeCto:List:Filter:Animation"..idchci,animation)  
 end
 if DAata and DAata:match("^pito(.*)$") and Addictive(data) then  
-local idchci = database:get(bot_id.."Mega:Filter:msg")
+local idchci = database:get(bot_id.."VeCto:Filter:msg")
 local photo = DAata:match("^pito(.*)$")
 local Text ="• تم اللغاء منعها بنجاح"
 inline = {
-{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/fBBBBB'}},
+{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/TeAm_VeCto'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
-database:srem(bot_id.."Mega:List:Filter:Photo"..idchci,photo)  
+database:srem(bot_id.."VeCto:List:Filter:Photo"..idchci,photo)  
 end
 if DAata and DAata:match("^Sticker(.*)$") and Addictive(data) then  
 idch = DAata:match("-100(%d+)")
@@ -9823,49 +9823,49 @@ local idchci = "-100"..idch
 local Sticker = DAata:match("^Sticker(.*)$"):gsub('chatid',''):gsub('chatid',''):gsub(idch,''):gsub('-100','')
 local Text ="• تم اللغاء منعه بنجاح"
 inline = {
-{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/fBBBBB'}},
+{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/TeAm_VeCto'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
-database:srem(bot_id.."Mega:List:Filter:Sticker"..idchci,Sticker)  
+database:srem(bot_id.."VeCto:List:Filter:Sticker"..idchci,Sticker)  
 end
 if DAata and DAata:match("^delallSticker(.*)$") and Addictive(data) then  
 local delallSticker = DAata:match("^delallSticker(.*)$")
 local Text ="• تم اللغاء منع كل المتحركات"
 inline = {
-{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾  .',url='http://t.me/fBBBBB'}},
+{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾  .',url='http://t.me/TeAm_VeCto'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
-local listSticker = database:smembers(bot_id.."Mega:List:Filter:Sticker"..delallSticker)  
+local listSticker = database:smembers(bot_id.."VeCto:List:Filter:Sticker"..delallSticker)  
 for k,v in pairs(listSticker) do  
-database:srem(bot_id.."Mega:List:Filter:Sticker"..delallSticker,v)  
+database:srem(bot_id.."VeCto:List:Filter:Sticker"..delallSticker,v)  
 end  
 end
 if DAata and DAata:match("^delallanimation(.*)$") and Addictive(data) then  
 local delallmation = DAata:match("^delallanimation(.*)$")
 local Text ="• تم اللغاء منع كل المتحركات"
 inline = {
-{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/fBBBBB'}},
+{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/TeAm_VeCto'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
-local listAnimation = database:smembers(bot_id.."Mega:List:Filter:Animation"..delallmation)  
+local listAnimation = database:smembers(bot_id.."VeCto:List:Filter:Animation"..delallmation)  
 for k,v in pairs(listAnimation) do  
-database:srem(bot_id.."Mega:List:Filter:Animation"..delallmation,v)  
+database:srem(bot_id.."VeCto:List:Filter:Animation"..delallmation,v)  
 end  
 end
 if DAata and DAata:match("^delallph(.*)$") and Addictive(data) then  
 local delallph = DAata:match("^delallph(.*)$")
 local Text ="• تم اللغاء منع كل الصور"
 inline = {
-{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/fBBBBB'}},
+{{text = '•  VeCto 𝖲𝗈𝗎𝗋𝖼𝖾 .  .',url='http://t.me/TeAm_VeCto'}},
 }
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 send_inlin_key(Chat_id,Text,inline)
-local listPhoto = database:smembers(bot_id.."Mega:List:Filter:Photo"..delallph)  
+local listPhoto = database:smembers(bot_id.."VeCto:List:Filter:Photo"..delallph)  
 for k,v in pairs(listPhoto) do  
-database:srem(bot_id.."Mega:List:Filter:Photo"..delallph,v)  
+database:srem(bot_id.."VeCto:List:Filter:Photo"..delallph,v)  
 end  
 end
 if DAata and DAata:match("^(%d+):cancelRd(.*)$") then
@@ -9875,8 +9875,8 @@ local notText = '• عذرا الاوامر هذه لا تخصك'
 https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape(notText).."&show_alert=true")
 return false
 end
-if database:get(bot_id.."Mega:Set:Manager:rd"..data.sender_user_id_..":"..data.chat_id_) then
-database:del(bot_id.."Mega:Set:Manager:rd"..data.sender_user_id_..":"..data.chat_id_)
+if database:get(bot_id.."VeCto:Set:Manager:rd"..data.sender_user_id_..":"..data.chat_id_) then
+database:del(bot_id.."VeCto:Set:Manager:rd"..data.sender_user_id_..":"..data.chat_id_)
 https.request("https://api.telegram.org/bot"..token.."/deleteMessage?chat_id="..Chat_id.."&message_id="..msg_idd)
 https.request("https://api.telegram.org/bot"..token.."/answerCallbackQuery?callback_query_id="..data.id_.."&text="..URL.escape("• تم الغاء الامر بنجاح").."&show_alert=true")
 else
