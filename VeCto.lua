@@ -541,7 +541,7 @@ send(msg.chat_id_, msg.id_,NameUserr.."\n"..text)
 return false
 end
 else
-send(msg.chat_id_, msg.id_,"• الحساب محذوف يرجى استخدام الامر بصوره صحيحه")
+send(msg.chat_id_, msg.id_,"•  الحساب محذوف يرجى استخدام الامر بصوره صحيحه")
 end
 end,nil)   
 end -- end
@@ -8758,7 +8758,6 @@ send(msg.chat_id_, msg.id_, "* • تم التحديث*")
 end
 
 
-
 if text == 'السورس' or text == 'سورس' or text == 'ياسورس' or text == 'يا سورس' then  
 
 Text = "\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n• [𝚅𝚎𝙲𝚝𝚘 𝖲𝗈𝗎𝗋𝖼𝖾 .](http://t.me/TeAm_VeCto) \n• [𝚅𝚎𝙲𝚝𝚘 Developer .](http://t.me/mmssds) \n ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉"
@@ -9023,8 +9022,6 @@ Text = [[
 send(msg.chat_id_, msg.id_,Text)
 return false
 end
-
-
 
 
 
