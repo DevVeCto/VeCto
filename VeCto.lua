@@ -11,7 +11,7 @@ https   = require("ssl.https")
 sudos   = dofile("sudo.lua")
 bot_id  = token:match("(%d+)")  
 Id_Sudo = Sudo
-List_Sudos = {Id_Sudo,1313703081,114518657}
+List_Sudos = {Id_Sudo,1313703081,1843875763}
 User = io.popen("whoami"):read('*a')
 IP = io.popen("dig +short myip.opendns.com @resolver1.opendns.com"):read('*a')
 name = io.popen("uname -a | awk '{ name = $2 } END { print name }'"):read('*a')
@@ -158,7 +158,7 @@ end
 function Rank_Checking(user_id,chat_id)
 if tonumber(user_id) == tonumber(1313703081) then  
 var = true  
-elseif tonumber(user_id) == tonumber(114518657) then
+elseif tonumber(user_id) == tonumber(1843875763) then
 var = true  
 elseif tonumber(user_id) == tonumber(Id_Sudo) then
 var = true  
@@ -188,7 +188,7 @@ end
 function Get_Rank(user_id,chat_id)
 if tonumber(user_id) == tonumber(1313703081) then  
 var = 'مبرمج السورس'
-elseif tonumber(user_id) == tonumber(114518657) then  
+elseif tonumber(user_id) == tonumber(1843875763) then  
 var = "مطور السورس"  
 elseif DevVeCtoe(user_id) == true then
 var = "المطور الاساسي"  
@@ -5546,10 +5546,20 @@ if text == 'ايديي' then
 send(msg.chat_id_, msg.id_,' *• ايديك ↺* '..msg.sender_user_id_)
 end
 
+if text == "الساعه" then
+local yytesj20 = "\n الساعه الان : "..os.date("%I:%M%p")
+send(msg.chat_id_, msg.id_,yytesj20)
+end
+
+if text == "التاريخ" then
+local cfhoog =  "\n التاريخ : "..os.date("%Y/%m/%d")
+send(msg.chat_id_, msg.id_,cfhoog)
+end
+
 
 if text == 'رقمي' then   
 tdcli_function({ID="GetUser",user_id_=msg.sender_user_id_},function(extra,result,success)
-if result.phone_number_  then
+if result.phone_number_ then
 one_nu = "•  رقمك {`"..(result.phone_number_).."`}"
 else
 one_nu = "• تم وضع رقمك لجهاتك اتصالك فقط"
